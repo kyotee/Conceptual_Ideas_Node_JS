@@ -1,0 +1,24 @@
+{
+  "name": "Conceptual_Ideas_Node_JS-tamkylet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamkylet/Conceptual_Ideas_Node_JS-tamkylet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tamkylet/Conceptual_Ideas_Node_JS-tamkylet/issues"
+  },
+  "homepage": "https://github.com/tamkylet/Conceptual_Ideas_Node_JS-tamkylet#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "password-generator": "^2.2.0"
+  }
+}
