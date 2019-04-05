@@ -20,6 +20,7 @@
   "homepage": "https://github.com/tamkylet/Conceptual_Ideas_Node_JS-tamkylet#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "mysql": "^2.16.0",
     "password-generator": "^2.2.0"
   }
 }
