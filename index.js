@@ -7,31 +7,10 @@ var { test, testdb } = require("./controllers/test");
 const app = express();
 
 // MySQL database connection
-function handleDisconnect() {
-  const con = mysql.createConnection({
-    // server database for production
-    host     : 'us-cdbr-iron-east-03.cleardb.net',
-    user     : 'b1716937e432f2',
-    password : '5bb18616',
-    database : 'heroku_9705d094c064be3'
-  });
-
-  con.connect((err) => {
-    if(err){
-      console.log('Error connecting to Db');
-      handleDisconnect();
-      return;
-    }
-    console.log('Connection established');
-  });
-
-  global.con = con;
-}
-
 const mysql = require('mysql');
 
 if (process.env.NODE_ENV === "production") {
-  const con = mysql.createConnection({
+  const con = mysql.createPool({
     // server database for production
     host     : 'us-cdbr-iron-east-03.cleardb.net',
     user     : 'b1716937e432f2',
@@ -39,13 +18,9 @@ if (process.env.NODE_ENV === "production") {
     database : 'heroku_9705d094c064be3'
   });
 
-  con.connect((err) => {
-    if(err){
-      console.log('Error connecting to Db');
-      handleDisconnect();
-      return;
-    }
-    console.log('Connection established');
+  con.getConnection(function(err, connection) {
+    // connected! (unless `err` is set)
+    connection.release();
   });
 
   global.con = con;
