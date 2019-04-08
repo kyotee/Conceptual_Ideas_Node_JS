@@ -1,0 +1,58 @@
+$light-yellow: #ffffCC;
+$default-fonts: Helvetica, Arial, sans-serif;
+
+body, html {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	position: absolute
+}
+
+.no-outline {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none
+}
+
+#background-img {
+	position: relative;
+	background-image: linear-gradient(to bottom, transparent, white), url("./images/normal_background.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 100%;
+	max-height: 100%;
+	background-size: cover
+}
+
+#nav {
+	background: rgba(255,255,255,0.6);
+	border-bottom: 0.25em solid $light-yellow;
+	position: fixed;
+	width: 100%;
+	z-index: 1
+}
+
+#root {
+	min-height: 100vh;
+	padding-top: 8em
+}
+
+#footer {
+	background: #D3D3D3;
+	border-top: 0.25em solid $light-yellow;
+	height: 10em;
+	padding-bottom: 2em;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    color: #68838B;
+    opacity: 0.6;
+    font-family: $default-fonts;
+    width: 100%
+}
