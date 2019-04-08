@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "heroku-postbuild": "cd views && npm install && npm run build",
-    "test": "mocha"
+    "test": "mocha",
+    "nightwatch": "nightwatch -c tests/nightwatch.conf.js -e chrome,firefox,safari"
   },
   "repository": {
     "type": "git",
@@ -20,10 +21,16 @@
   },
   "homepage": "https://github.com/tamkylet/Conceptual_Ideas_Node_JS-tamkylet#readme",
   "dependencies": {
+    "asset": "^0.4.13",
+    "chromedriver": "^2.46.0",
     "express": "^4.16.4",
+    "geckodriver": "^1.16.1",
     "mocha": "^5.2.0",
     "mysql": "^2.16.0",
-    "password-generator": "^2.2.0"
+    "nightwatch": "^1.0.19",
+    "password-generator": "^2.2.0",
+    "request": "^2.88.0",
+    "selenium-server": "^3.141.59"
   },
   "devDependencies": {
     "mocha-junit-reporter": "^1.21.0"
