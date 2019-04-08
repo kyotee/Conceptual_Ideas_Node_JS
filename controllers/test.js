@@ -1,3 +1,5 @@
+const { getAllTest } = require('../models');
+
 module.exports = {
 	// index
     test: (req, res) => {
@@ -9,15 +11,8 @@ module.exports = {
 
 	// show
     testdb: (req, res) => {
-    	let query = "SELECT * FROM `employees`"; 
-
-		con.query(query, (err,rows) => {
-			if (err) {
-				// res.redirect('/');
-			}
-
-			res.send(rows);
-			console.log(rows);
+		getAllTest(function(result){
+			res.send(result);
 		});
 	}
 };

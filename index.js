@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const generatePassword = require('password-generator');
 
-var { test, testdb } = require("./controllers");
+var { test } = require("./controllers");
 
 const app = express();
 
@@ -47,8 +47,8 @@ if (process.env.NODE_ENV === "production") {
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'views/build')));
 
-app.get("/api/test", test);
-app.get("/api/testdb", testdb);
+app.get("/api/test", test.test);
+app.get("/api/testdb", test.testdb);
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.

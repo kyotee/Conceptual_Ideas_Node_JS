@@ -1,3 +1,3 @@
-const { test,testdb } = require('./test')
+const test = require('./test')
 
-module.exports = { test,testdb }
+module.exports = { test }
