@@ -2,6 +2,12 @@
 const apps = {
 	"app": [
 		{
+			name: "User Stories",
+			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			route: "user_stories",
+			color: "#FFEFDB"
+		},
+		{
 			name: "Template",
 			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 			route: "#",
@@ -11,31 +17,25 @@ const apps = {
 			name: "Template",
 			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 			route: "#",
-			color: "#FFFACD"
+			color: "#FFEFDB"
 		},
 		{
 			name: "Template",
 			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 			route: "#",
-			color: "#FFE4E1"
+			color: "#FFEFDB"
 		},
 		{
 			name: "Template",
 			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 			route: "#",
-			color: "#E8F1D4"
+			color: "#FFEFDB"
 		},
 		{
 			name: "Template",
 			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 			route: "#",
-			color: "#dbeaf2"
-		},
-		{
-			name: "Template",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-			route: "#",
-			color: "#E6E6FA"
+			color: "#FFEFDB"
 		}
 	]
 };

@@ -4,7 +4,10 @@ import ReactDOM from 'react-dom';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
 import Notfound from './notfound';
 import NavigationBar from './javascripts/ui/navigation_bar.js';
-import UserApplications from './javascripts/ui/user_applications.js'; 
+import UserApplications from './javascripts/ui/user_applications.js';
+import About from './javascripts/ui/about.js';
+import Contact from './javascripts/ui/contact.js';
+import UserStories from './javascripts/ui/user_stories.js'; 
 import App from './javascripts/ui/app.js';
 import App1 from './javascripts/ui/app1.js';
 import CounterRedux from './javascripts/containers/counterRedux.js';
@@ -16,6 +19,9 @@ const routing = (
     <div>
       <Switch>
         <Route exact path="/" component={UserApplications} />
+        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/user_stories" component={UserStories} />
         <Route path="/app" component={App} />
         <Route path="/app1" component={App1} />
         <Route

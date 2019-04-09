@@ -12,6 +12,15 @@ $default-fonts: Helvetica, Arial, sans-serif;
 	}
 }
 
+#root {
+	@media screen and (max-width: 767px){
+		padding: 2.5em 0 2em
+	}
+	@media screen and (min-width: 768px){
+		padding: 2.5em 8em 8em 8em
+	}
+}
+
 /* index.scss */
 
 body, html {

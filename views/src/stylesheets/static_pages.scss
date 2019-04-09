@@ -1,0 +1,60 @@
+$img-fonts: Helvetica, Arial, sans-serif;
+
+.app-title-space {
+	@media screen and (max-width: 767px){
+		text-align: center
+	}
+}
+
+.app-titles {
+	@media screen and (max-width: 767px){
+		display: inline-block
+	}
+}
+
+#idea-icon-title {
+	@media screen and (min-width: 10px){
+		width: 2em;
+		height: 2em
+	}
+	@media screen and (max-width: 767px){
+		float: left;
+		padding-right: 0.5em
+	}
+	@media screen and (min-width: 768px){
+		float: left;
+		padding-right: 0.75em
+	}
+}
+
+.app-title {
+	@media screen and (max-width: 767px){
+		float: right
+	}
+	@media screen and (min-width: 10px){
+		font-size: x-large
+	}
+}
+
+
+.app-title {
+	font-family: $img-fonts;
+	color: #0080ff;
+	margin-top: 0
+}
+
+.static-page-text {
+	color: #68838B;
+	font-family: Arial, Calibri, sans-serif	
+}
+
+.static-page-text {
+	@media screen and (max-width: 767px){
+		padding: 0 2.5em 0 2.5em
+	}
+}
+
+#idea-icon-title {
+	background-image: url(../images/idea.svg);
+	background-repeat: no-repeat
+}
