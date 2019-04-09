@@ -1,6 +1,19 @@
 $light-yellow: #ffffCC;
 $default-fonts: Helvetica, Arial, sans-serif;
 
+/* index.scss media queries */
+
+#background-img {
+	@media screen and (max-width: 767px){
+	    background-size: 100em 200em
+	}
+	@media screen and (min-width: 768px){
+	    background-size: 150em 250em
+	}
+}
+
+/* index.scss */
+
 body, html {
 	width: 100%;
 	height: 100%;
@@ -24,8 +37,7 @@ body, html {
 	background-position: center;
 	background-repeat: no-repeat;
 	min-height: 100%;
-	max-height: 100%;
-	background-size: cover
+	max-height: 100%
 }
 
 #nav {
@@ -54,5 +66,28 @@ body, html {
     color: #68838B;
     opacity: 0.6;
     font-family: $default-fonts;
-    width: 100%
+    width: 100%;
+
+    #footer-links {
+    	float: left;
+    	padding: 1em 2em 1em 2em;
+
+    	a {
+    		display: inline;
+    		padding-right: 0.5em;
+    		text-decoration: none
+    	}
+    }
+
+    #references {
+    	background: #D3D3D3;
+    	float: right;
+		padding: 1em 2em 1em 2em
+    }
+}
+
+.links-color {
+	a:link, a:visited, a:hover {
+		color: #0080ff
+	}
 }
