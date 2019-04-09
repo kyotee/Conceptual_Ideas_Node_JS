@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ActionButton from './_action_button.js';
 import apps from '../json_data/applications.js';
+import "../../stylesheets/user_applications.scss";
 
 class UserApplications extends Component {
 	componentDidMount() {

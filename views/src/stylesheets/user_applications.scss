@@ -1,0 +1,112 @@
+$default-fonts: Helvetica, Arial, sans-serif;
+
+/* user_applications.scss media queries */
+.boxes {
+	@media screen and (max-width: 767px){
+	    width: 15em;
+		height: 23em;
+		margin: 0 1.25em 2em
+	}
+	@media screen and (min-width: 768px){
+	    width: 20em;
+		height: 25em;
+		margin: 0 2em 5em
+	}
+}
+
+/* user_applications.scss */
+.button-apps .img-button {
+ 	width: 16em
+ }
+
+.img-button {
+	width: 20em;
+   	border-radius: 0.5em;
+	border-style: solid;
+	height: 3em !important;
+	outline: none;
+	font-size: 1em;
+	color: white;
+	background-color: #00b0b0;
+	cursor: pointer
+}
+
+.boxes {
+	display: inline-block;
+	width: 19em;
+	border-radius: 0.5em;
+	background-color: white;
+	box-shadow: 0em 0.3em 0.3em 0em rgba(0, 0, 0, 0.2), 0 0.3em 0.3em 0em rgba(0, 0, 0, 0.1);
+	cursor: pointer
+}
+
+.boxes:hover {
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    border-radius: 1em;
+    -webkit-box-shadow: 0em 0em 2em 0em rgba(93, 173, 226, 0.67);
+    -moz-box-shadow: 0em 0em 2em 0em rgba(93, 173, 226, 0.67);
+    box-shadow: 0em 0em 2em 0em rgba(93, 173, 226, 0.67)
+}
+
+.header-apps, .image-apps, .describe-apps, .button-apps, .button-apps-container {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	font-family: $default-fonts
+}
+
+.header-apps {
+	height: 13%;
+	border-radius: 0.5em 0.5em 0em 0em;
+	background-color: #26abff;
+	font-size: 125%;
+	color: white
+}
+
+.image-apps {
+	height: 39%
+}
+
+.idea-icon-apps {
+	background-image: url("../images/idea.svg");
+	width: 4.5em;
+	height: 5em;
+	top: 0.6em;
+	left: 7.2em
+}
+
+.idea-dropdown, .icon-dropdown, .idea-icon-form, .idea-icon-apps {
+	position: relative;
+	display: inline-block;
+	background-repeat: no-repeat
+}
+
+.describe-apps {
+	height: 22%;
+	padding-top: 0.4em;
+	background-color: white
+}
+
+.button-apps {
+	height: 20%;
+	border-radius: 0em 0em 0.5em 0.5em;
+	margin-top: 1em;
+	margin-left: 1.45em;
+	background-color: white
+}
+
+.button-apps .img-button {
+ 	width: 16em
+ }
+
+#applications {
+	display: block;
+	text-align: center;
+	margin: 0 auto;
+
+	ul {
+		padding: 0;
+		margin: 0
+	}
+}
