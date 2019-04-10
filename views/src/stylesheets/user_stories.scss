@@ -12,11 +12,21 @@
     -webkit-box-shadow: 0.25px 2px 2px 3px #ccc;
     -moz-box-shadow: 0.25px 2px 2px 3px #ccc;
     box-shadow: 0.25px 2px 2px 3px #ccc;
-    padding: 0.5em 0 0.5em 0
+    padding: 0.5em 0 0.5em 0;
+    background-color: #66b2b2
+}
+
+.user-story-container {
+	width: 96.5%;
+	background-color: white;
+	margin: auto;
+	height: 19.9em;
+	border-radius: 0.75em
 }
 
 .title-container {
-	padding: 0 1.75em 0 1.75em
+	padding: 0 1.75em 0 1.75em;
+	background-color: #fff6e5
 }
 
 .title-image {
@@ -38,7 +48,7 @@
 }
 
 .title-line {
-	border-top: 0.25em solid #DCDCDC
+	border-top: 0.15em solid #DCDCDC
 }
 
 .story-body {
