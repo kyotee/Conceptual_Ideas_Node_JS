@@ -23,6 +23,7 @@
   "dependencies": {
     "asset": "^0.4.13",
     "chromedriver": "^2.46.0",
+    "crypto": "^1.0.1",
     "express": "^4.16.4",
     "geckodriver": "^1.16.1",
     "mocha": "^5.2.0",
