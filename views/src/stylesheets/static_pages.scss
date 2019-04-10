@@ -1,5 +1,7 @@
 $img-fonts: Helvetica, Arial, sans-serif;
 
+/* static_pages.scss media queries */
+
 .app-title-space {
 	@media screen and (max-width: 767px){
 		text-align: center
@@ -36,6 +38,7 @@ $img-fonts: Helvetica, Arial, sans-serif;
 	}
 }
 
+/* static_pages.scss */
 
 .app-title {
 	font-family: $img-fonts;

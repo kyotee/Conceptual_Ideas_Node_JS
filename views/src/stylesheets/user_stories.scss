@@ -1,0 +1,55 @@
+/* user_stories.scss media queries */
+
+/* user_stories.scss */
+
+.user-story {
+	font-family: Arial, Calibri, sans-serif;
+	width: 80%;
+	max-width: 40em;
+	height: 20em;
+	background-color: white;
+	margin: auto;
+    -webkit-box-shadow: 0.25px 2px 2px 3px #ccc;
+    -moz-box-shadow: 0.25px 2px 2px 3px #ccc;
+    box-shadow: 0.25px 2px 2px 3px #ccc;
+    padding: 0.5em 0 0.5em 0
+}
+
+.title-container {
+	padding: 0 1.75em 0 1.75em
+}
+
+.title-image {
+	background-image: url("../images/idea.svg");
+	width: 1.5em;
+	height: 1.5em;
+	margin-top: 0.75em;
+	display: inline-block
+}
+
+.title {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 150%;
+	margin-top: 0;
+	margin-left: 0.5em;
+	margin-bottom: 0.6em;
+	color: #1e90ff;
+	display: inline-block
+}
+
+.title-line {
+	border-top: 0.25em solid #DCDCDC
+}
+
+.story-body {
+	padding: 0 1.75em 0 1.75em;
+
+	p:nth-child(odd) {
+		margin-bottom: 0;
+		color: #72bcd4	
+	}
+
+	p:nth-child(even) {
+		margin-top: 0.35em
+	}
+}
