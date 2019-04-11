@@ -37,29 +37,56 @@
 	display: inline-block
 }
 
-.title {
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 150%;
-	margin-top: 0;
-	margin-left: 0.5em;
-	margin-bottom: 0.6em;
-	color: #1e90ff;
-	display: inline-block
-}
-
 .title-line {
 	border-top: 0.15em solid #DCDCDC
 }
 
 .story-body {
-	padding: 0 1.75em 0 1.75em;
+	padding: 0 1.75em 0 1.75em
+}
 
-	p:nth-child(odd) {
-		margin-bottom: 0;
-		color: #72bcd4	
-	}
+.title {
+	display: inline-block
+}
 
-	p:nth-child(even) {
-		margin-top: 0.35em
-	}
+.edit-title {
+	display: none
+}
+
+.edit-title, .title {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 150%;
+	margin-top: 0;
+	margin-left: 0.5em;
+	margin-bottom: 0.6em;
+	color: #1e90ff
+}
+
+.body-font {
+	margin-bottom: 0;
+	color: #72bcd4	
+}
+
+.body-text, .edit-body-text {
+	margin-top: 0.35em
+}
+
+.edit-body-text {
+	display: none
+}
+
+.title.edit, .body-text.edit {
+	display: none
+}
+
+.edit-title.edit, .edit-body-text.edit {
+	display: inline-block	
+}
+
+.editing, .printing {
+	width: 5em;
+	height: 2em;
+	background-color: #008080;
+	cursor: pointer;
+	color: white
 }
