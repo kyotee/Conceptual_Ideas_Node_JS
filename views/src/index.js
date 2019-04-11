@@ -7,6 +7,7 @@ import NavigationBar from './javascripts/ui/navigation_bar.js';
 import UserApplications from './javascripts/ui/user_applications.js';
 import About from './javascripts/ui/about.js';
 import Contact from './javascripts/ui/contact.js';
+import SignupSigninForm from './javascripts/ui/signup_signin_form.js';
 import UserStories from './javascripts/ui/user_stories.js'; 
 import App from './javascripts/ui/app.js';
 import App1 from './javascripts/ui/app1.js';
@@ -21,6 +22,14 @@ const routing = (
         <Route exact path="/" component={UserApplications} />
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
+        <Route
+          path='/signup'
+          render={(props) => <SignupSigninForm {...props} formType={"Sign up"} />}
+        />
+        <Route
+          path='/login'
+          render={(props) => <SignupSigninForm {...props} formType={"Sign in"} />}
+        />
         <Route path="/user_stories" component={UserStories} />
         <Route path="/app" component={App} />
         <Route path="/app1" component={App1} />

@@ -12,7 +12,7 @@ class About extends Component {
                     </div>
                 </div>
 
-                <p class="static-page-text">Associated web based application serves as learning of various software libraries, frameworks, and other technologies with use of (and in addition to learning as well) Ruby on Rails. Intent for learning is related to personal interests. Note that development targets application use with Chrome Browser.</p>
+                <p class="static-page-text">Associated web based application serves as learning of various software libraries, frameworks, and other technologies with use of (and in addition to learning as well) Node.js (with Express). Intent for learning is related to personal interests. Note that development targets application use with Chrome Browser.</p>
             </div>
         );
     }

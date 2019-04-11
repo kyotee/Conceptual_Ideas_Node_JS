@@ -1,0 +1,112 @@
+$form-fonts: Arial, Calibri, sans-serif;
+
+/* session.scss media queries */
+#signup-table tbody {
+	tr > td > input {
+		@media screen and (max-width: 321px){
+		    width: 10em
+		}
+		@media screen and (min-width: 322px) and (max-width: 767px){
+		    width: 14em
+		}
+		@media screen and (min-width: 768px){
+		    width: 20em
+		}
+	}
+}
+
+#accept-button {
+	@media screen and (max-width: 321px){
+	    width:9em
+	}
+	@media screen and (min-width: 322px) and (max-width: 767px){
+	    width:12.4em
+	}
+	@media screen and (min-width: 768px){
+	    width: 17.4em
+	}
+}
+
+/* session.scss */
+#signup-now {
+	font-family: Arial, Calibri, sans-serif;
+	color: #68838B;
+	a {
+		color: #68838B;
+		font-style: italic;
+
+		&:visited, &:hover, &:active {
+			color: #68838B
+		}
+	}
+}
+
+#signup-table-rails {
+	margin: auto
+}
+
+#signup-table tbody {
+	margin: auto;
+	tr > th > p {
+		font-family: $form-fonts;
+		font-weight: normal;
+		font-size: 1.15em;
+		margin-bottom: 0;
+		text-align: left;
+		color: #68838B
+	}
+	tr > td > input {
+		height: 2em;
+    	border-radius: 0.5em;
+    	border-style: solid;
+    	outline: none;
+    	border-color: #68838B;
+    	padding-left: 0.5em
+	}
+	tr > td > p {
+		display: inline;
+		font-family: $form-fonts;
+		font-size: 85%;
+		color: #0080ff;
+		display: none
+	}
+}
+
+.idea-icon-form {
+	position: relative;
+	display: inline-block;
+	background-repeat: no-repeat
+}
+
+.form-title {
+	text-align: left;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: 400;
+	color: #0080ff;
+	margin: 0
+}
+
+#accept-button {
+   	border-radius: 0.5em;
+	border-style: solid;
+	margin-top: 1.75em;
+	height: 3em !important;
+	outline: none;
+	font-size: 1em;
+	color: #68838B;
+	background-color: #D3D3D3;
+	margin-bottom: 1.75em;
+	cursor: pointer
+}
+
+#signup-table {
+	margin: auto
+}
+
+.idea-icon-form {
+	background-image: url("../images/idea.svg");
+	width: 2em;
+	height: 2em;
+	float: left;
+	padding-right: 0.75em
+}

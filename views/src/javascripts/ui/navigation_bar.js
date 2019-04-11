@@ -8,14 +8,14 @@ class NavigationBar extends Component {
 		});
 
 		document.getElementById('signing-up').addEventListener("click", function() {
-			window.location = "/";
+			window.location = "/signup";
 		});
 	}
 	loggedin() {
 		return (
 			<div id="login-signup">
 				<p id="signing-up">Sign up</p>
-				<p><a href="#" id="signin_link">Sign in</a></p>
+				<p><a href="/login" id="signin_link">Sign in</a></p>
 			</div>
 		)
 	}

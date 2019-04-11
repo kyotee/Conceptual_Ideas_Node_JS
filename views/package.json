@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
+    "axios": "^0.18.0",
     "html2canvas": "^1.0.0-rc.1",
     "jspdf": "^1.5.3",
     "node-sass": "^4.11.0",
