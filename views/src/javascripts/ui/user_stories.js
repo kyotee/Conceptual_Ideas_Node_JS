@@ -8,7 +8,7 @@ class UserStories extends Component {
 		let title = document.getElementsByClassName('title')[0];
 		let editTitle = document.getElementsByClassName('edit-title')[0];
 		let bodyText = document.getElementsByClassName('body-text');
-		let EditBodyText = document.getElementsByClassName('edit-body-text');		
+		let editBodyText = document.getElementsByClassName('edit-body-text');		
 		let edit = document.getElementsByClassName('editing')[0];
 
 		edit.addEventListener("click", function() {
@@ -17,9 +17,9 @@ class UserStories extends Component {
 			bodyText[0].classList.toggle('edit');
 			bodyText[1].classList.toggle('edit');
 			bodyText[2].classList.toggle('edit');
-			EditBodyText[0].classList.toggle('edit');
-			EditBodyText[1].classList.toggle('edit');
-			EditBodyText[2].classList.toggle('edit');
+			editBodyText[0].classList.toggle('edit');
+			editBodyText[1].classList.toggle('edit');
+			editBodyText[2].classList.toggle('edit');
 		});
 	}
 	printDocument() {
