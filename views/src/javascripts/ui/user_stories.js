@@ -8,38 +8,39 @@ class UserStories extends Component {
 		super(props);
 	}
 	componentDidMount() {
-		let title = document.getElementsByClassName('title')[0];
-		let editTitle = document.getElementsByClassName('edit-title')[0];
+		let title = document.getElementsByClassName('title')[this.props.position];
+		let editTitle = document.getElementsByClassName('edit-title')[this.props.position];
 		let bodyText = document.getElementsByClassName('body-text');
 		let editBodyText = document.getElementsByClassName('edit-body-text');		
-		let edit = document.getElementsByClassName('editing')[0];
+		let edit = document.getElementsByClassName('editing')[this.props.position];
+		let offset = this.props.position*3;
 
 		edit.addEventListener("click", function() {
 			this.props.changeEdit(!this.props.edit);
 			title.classList.toggle('edit');
 			editTitle.classList.toggle('edit');
-			bodyText[0].classList.toggle('edit');
-			bodyText[1].classList.toggle('edit');
-			bodyText[2].classList.toggle('edit');
-			editBodyText[0].classList.toggle('edit');
-			editBodyText[1].classList.toggle('edit');
-			editBodyText[2].classList.toggle('edit');
+			bodyText[offset+0].classList.toggle('edit');
+			bodyText[offset+1].classList.toggle('edit');
+			bodyText[offset+2].classList.toggle('edit');
+			editBodyText[offset+0].classList.toggle('edit');
+			editBodyText[offset+1].classList.toggle('edit');
+			editBodyText[offset+2].classList.toggle('edit');
 
 			if (this.props.edit) {
 				editTitle.value = title.innerHTML;
-				editBodyText[0].value = bodyText[0].innerHTML;
-				editBodyText[1].value = bodyText[1].innerHTML;
-				editBodyText[2].value = bodyText[2].innerHTML;
+				editBodyText[offset+0].value = bodyText[offset+0].innerHTML;
+				editBodyText[offset+1].value = bodyText[offset+1].innerHTML;
+				editBodyText[offset+2].value = bodyText[offset+2].innerHTML;
 			} else {
 				title.innerHTML = editTitle.value;
-				bodyText[0].innerHTML = editBodyText[0].value;
-				bodyText[1].innerHTML = editBodyText[1].value;
-				bodyText[2].innerHTML = editBodyText[2].value;
+				bodyText[offset+0].innerHTML = editBodyText[offset+0].value;
+				bodyText[offset+1].innerHTML = editBodyText[offset+1].value;
+				bodyText[offset+2].innerHTML = editBodyText[offset+2].value;
 			}
 		}.bind(this));
 	}
 	printDocument() {
-		const input = document.getElementsByClassName('user-story')[0];
+		const input = document.getElementsByClassName('user-story')[this.props.position];
 
 		html2canvas(input)
 			.then((canvas) => {
@@ -50,7 +51,7 @@ class UserStories extends Component {
 			});
 	}
 	render() {
-		const { edit, changeEdit } = this.props;
+		const { edit,changeEdit } = this.props;
 		return (
 			<div>
 				<div className="user-story">

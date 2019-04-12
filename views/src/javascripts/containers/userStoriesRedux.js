@@ -12,7 +12,7 @@ class UserStoriesRedux extends Component {
   render() {
     return (
       <Provider store={store}>
-        <UserStoriesContainer />
+        <UserStoriesContainer position={this.props.position} />
       </Provider>
     );
   }
