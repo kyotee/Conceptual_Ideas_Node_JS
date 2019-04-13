@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import * as html2canvas from 'html2canvas';
-import * as jsPDF from 'jspdf';
 import "../../stylesheets/user_stories.scss";
 
 class UserStories extends Component {
@@ -39,17 +37,6 @@ class UserStories extends Component {
 			}
 		}.bind(this));
 	}
-	printDocument() {
-		const input = document.getElementsByClassName('user-story')[this.props.position];
-
-		html2canvas(input)
-			.then((canvas) => {
-			    const imgData = canvas.toDataURL('image/png');
-			    const pdf = new jsPDF();
-			    pdf.addImage(imgData, 'JPEG', 0, 0);
-			    pdf.save("user_stories.pdf");
-			});
-	}
 	render() {
 		const { edit,changeEdit } = this.props;
 		return (
@@ -59,6 +46,7 @@ class UserStories extends Component {
 						<div className="title-container">
 							<div className="title-image"></div>
 							<p className="title">Conceptual Idea</p>
+							<p className="editing">Edit</p>
 							<input className="edit-title" type="text"></input>
 						</div>
 						<div className="title-line"></div>
@@ -75,9 +63,6 @@ class UserStories extends Component {
 						</div>
 					</div>
 				</div>
-
-				<p className="printing" onClick={this.printDocument}>Print</p>
-				<p className="editing">Edit</p>
 			</div>
 		)
 	}
