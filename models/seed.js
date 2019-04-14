@@ -9,17 +9,17 @@ const queryListTablesDelete = {
 
 const queryListTables = {
 	"Create users table.": `CREATE TABLE users (
-							  id int(11) NOT NULL AUTO_INCREMENT,
+							  id SERIAL,
 							  name varchar(12) NOT NULL,
-							  email varchar(39) NOT NULL,
+							  email varchar(39) NOT NULL UNIQUE,
 							  password_digest varchar(75) NOT NULL,
 							  PRIMARY KEY (id)
 							)`
 };
 
-// const queryListRecords = {
-// 	"Delete all records from users table.": "DELETE FROM `users`"
-// };
+const queryListRecords = {
+	"Insert records to users table.": `INSERT INTO users (name,email,password_digest) VALUES `
+};
 
 const querying = (connection,query,status) => {
 	connection.query(query, (err,rows) => {
@@ -56,6 +56,31 @@ exports.seedData = function() {
 
 	Object.keys(queryListTables).forEach(function(key) {
   		querying(conLocal,queryListTables[key], key);
+	})
+
+	Object.keys(queryListRecords).forEach(function(key,index) {
+		switch(index)
+		{
+			// user table seed data
+		    case 0:
+		    	let usersData = [];
+
+		    	usersData.push("('admin', 'admin@hotmail.com', 'admin1')");
+
+		        for (let i = 0; i < 50; i++) { 
+		        	usersData.push(`('${faker.name.firstName()}', '${faker.name.firstName()}@fake.com', 'password1')`);
+				}
+				
+				queryListRecords[key] += usersData.join(", ");
+		        break;
+		    case 1:
+		        expression;
+		        break;
+		    default:
+		        break;
+		}
+
+  		querying(conLocal,queryListRecords[key], key);
 	})
 
 	conLocal.end();
