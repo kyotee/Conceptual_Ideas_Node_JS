@@ -27,10 +27,12 @@ class UserStoriesList extends Component {
 			});
 	}
 	addStory() {
-		// addStoryCount(this.props.storyCount+1);
+		if (this.props.storyCount < 5)
+			this.props.addStoryCount(this.props.storyCount+1);
 	}
 	deleteStory() {
-		// deleteStoryCount(this.props.storyCount-1);
+		if (this.props.storyCount > 0)
+			this.props.deleteStoryCount(this.props.storyCount-1);
 	}
 	stories() {
 		let currentStories = [];

@@ -3,9 +3,23 @@
 const mysql = require('mysql');
 const faker = require('faker');
 
-const queryList = {
-	"Delete all records from users table.": "DELETE FROM `users`"
+const queryListTablesDelete = {
+	"Delete users table.": `DROP TABLE users`
 };
+
+const queryListTables = {
+	"Create users table.": `CREATE TABLE users (
+							  id int(11) NOT NULL AUTO_INCREMENT,
+							  name varchar(12) NOT NULL,
+							  email varchar(39) NOT NULL,
+							  password_digest varchar(75) NOT NULL,
+							  PRIMARY KEY (id)
+							)`
+};
+
+// const queryListRecords = {
+// 	"Delete all records from users table.": "DELETE FROM `users`"
+// };
 
 const querying = (connection,query,status) => {
 	connection.query(query, (err,rows) => {
@@ -36,8 +50,12 @@ exports.seedData = function() {
 		console.log('-Local database connection established.-');
 	});
 
-	Object.keys(queryList).forEach(function(key) {
-  		querying(conLocal,queryList[key], key);
+	Object.keys(queryListTablesDelete).forEach(function(key) {
+  		querying(conLocal,queryListTablesDelete[key], key);
+	})
+
+	Object.keys(queryListTables).forEach(function(key) {
+  		querying(conLocal,queryListTables[key], key);
 	})
 
 	conLocal.end();
