@@ -1,19 +1,31 @@
 // Execute from terminal with the following command:
 // node -e 'require("./seed").seedData()'
+const { encrypt } = require('./encryption.js');
 const mysql = require('mysql');
 const faker = require('faker');
 
 const queryListTablesDelete = {
-	"Delete users table.": `DROP TABLE users`
+	"Delete stories table.": `DROP TABLE IF EXISTS stories`,
+	"Delete users table.": `DROP TABLE IF EXISTS users`
 };
 
 const queryListTables = {
 	"Create users table.": `CREATE TABLE users (
-							  id SERIAL,
+							  users_id SERIAL,
 							  name varchar(12) NOT NULL,
 							  email varchar(39) NOT NULL UNIQUE,
 							  password_digest varchar(75) NOT NULL,
-							  PRIMARY KEY (id)
+							  PRIMARY KEY (users_id)
+							)`,
+	"Create stories table.": `CREATE TABLE stories (
+							    stories_id SERIAL,
+							    users_id BIGINT UNSIGNED NOT NULL,
+							    title varchar(35),
+							    given_case varchar(49),
+							    when_case varchar(49),
+							    then_case varchar(49),
+							    PRIMARY KEY (stories_id),
+							    FOREIGN KEY (users_id) REFERENCES users(users_id) ON DELETE CASCADE
 							)`
 };
 
@@ -24,7 +36,7 @@ const queryListRecords = {
 const querying = (connection,query,status) => {
 	connection.query(query, (err,rows) => {
 		if (err) {
-			console.log("Database query error.");
+			console.log(err);
 		}
 
 		console.log(status);
@@ -68,13 +80,13 @@ exports.seedData = function() {
 		    	usersData.push("('admin', 'admin@hotmail.com', 'admin1')");
 
 		        for (let i = 0; i < 50; i++) { 
-		        	usersData.push(`('${faker.name.firstName()}', '${faker.name.firstName()}@fake.com', 'password1')`);
+		        	usersData.push(`('${faker.name.firstName()}', '${faker.name.firstName()}@fake${i}.com', '${encrypt("password1")}')`);
 				}
 				
 				queryListRecords[key] += usersData.join(", ");
 		        break;
 		    case 1:
-		        expression;
+		        // expression;
 		        break;
 		    default:
 		        break;
