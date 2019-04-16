@@ -20,3 +20,10 @@ export function deleteStoryCount(storyCount) {
     storyCount: storyCount
   };
 }
+
+export function setStories(stories) {
+  return {
+    type: C.SET_STORIES,
+    stories: stories
+  };
+}

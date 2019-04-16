@@ -6,7 +6,13 @@ import * as UserStoriesActions from '../actions/userStories';
 function mapStateToProps(state, ownProps) {
   return {
     edit: state.userStories.edit,
-    position: ownProps.position
+    position: ownProps.position,
+    stories_id: ownProps.stories_id,
+    users_id: ownProps.users_id,
+    title: ownProps.title,
+    given_case: ownProps.given_case,
+    when_case: ownProps.when_case,
+    then_case: ownProps.then_case
   }
 }
 

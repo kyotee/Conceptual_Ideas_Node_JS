@@ -12,7 +12,14 @@ class UserStoriesRedux extends Component {
   render() {
     return (
       <Provider store={store}>
-        <UserStoriesContainer position={this.props.position} />
+        <UserStoriesContainer position={this.props.position} 
+							  stories_id={this.props.stories_id}
+							  users_id={this.props.users_id}
+							  title={this.props.title}
+							  given_case={this.props.given_case}
+							  when_case={this.props.when_case}
+							  then_case={this.props.then_case}
+        />
       </Provider>
     );
   }

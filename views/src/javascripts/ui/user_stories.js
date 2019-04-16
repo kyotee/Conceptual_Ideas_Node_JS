@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import "../../stylesheets/user_stories.scss";
 
 class UserStories extends Component {
@@ -38,27 +39,27 @@ class UserStories extends Component {
 		}.bind(this));
 	}
 	render() {
-		const { edit,changeEdit } = this.props;
+		const { changeEdit,position,stories_id,users_id,title,given_case,when_case,then_case } = this.props;
 		return (
 			<div>
 				<div className="user-story">
 					<div className="user-story-container">
 						<div className="title-container">
 							<div className="title-image"></div>
-							<p className="title">Conceptual Idea</p>
+							<p className="title">{title}</p>
 							<p className="editing">Edit</p>
 							<input className="edit-title" type="text"></input>
 						</div>
 						<div className="title-line"></div>
 						<div className="story-body">
 							<p className="body-font">Given</p>
-							<p className="body-text">A problem emerges.</p>
+							<p className="body-text">{given_case}</p>
 							<input className="edit-body-text"></input>
 							<p className="body-font">When</p>
-							<p className="body-text">Time is scarce.</p>
+							<p className="body-text">{when_case}</p>
 							<input className="edit-body-text"></input>
 							<p className="body-font">Then</p>
-							<p className="body-text">I must deal with it immediately.</p>
+							<p className="body-text">{then_case}</p>
 							<input className="edit-body-text"></input>
 						</div>
 					</div>
@@ -67,5 +68,16 @@ class UserStories extends Component {
 		)
 	}
 }
+
+UserStories.propTypes = {
+  changeEdit: PropTypes.func.isRequired,
+  position: PropTypes.number.isRequired,
+  stories_id: PropTypes.number.isRequired,
+  users_id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  given_case: PropTypes.string.isRequired,
+  when_case: PropTypes.string.isRequired,
+  then_case: PropTypes.string.isRequired
+};
 
 export default UserStories;
