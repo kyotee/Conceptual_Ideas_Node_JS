@@ -30,7 +30,8 @@ const queryListTables = {
 };
 
 const queryListRecords = {
-	"Insert records to users table.": `INSERT INTO users (name,email,password_digest) VALUES `
+	"Insert records to users table.": `INSERT INTO users (name,email,password_digest) VALUES `,
+	"Insert records to stories table.": `INSERT INTO stories (users_id,title,given_case,when_case,then_case) VALUES `
 };
 
 const querying = (connection,query,status) => {
@@ -86,7 +87,14 @@ exports.seedData = function() {
 				queryListRecords[key] += usersData.join(", ");
 		        break;
 		    case 1:
-		        // expression;
+		        // stories table seed data
+		        let storiesData = [];
+
+ 		        for (let i = 0; i < 3; i++) { 
+		        	storiesData.push(`('1', 'title-${i}', 'given-${i}', 'when-${i}', 'then-${i}')`);
+				}       
+
+				queryListRecords[key] += storiesData.join(", ");
 		        break;
 		    default:
 		        break;

@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const generatePassword = require('password-generator');
 
-var { test } = require("./controllers");
+var { test,stories } = require("./controllers");
 
 const app = express();
 
@@ -49,6 +49,7 @@ app.use(express.static(path.join(__dirname, 'views/build')));
 
 app.get("/api/test", test.test);
 app.get("/api/testdb", test.testdb);
+app.get("/api/stories", stories.show_stories);
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.

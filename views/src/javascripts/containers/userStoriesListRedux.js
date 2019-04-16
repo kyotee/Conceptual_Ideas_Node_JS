@@ -9,7 +9,14 @@ const store = configureStore();
 
 class UserStoriesListRedux extends Component {
   componentWillMount() {
-    store.dispatch(setStoryCount(3));
+    this.getUserStories();
+  }
+  getUserStories = () => {
+      fetch('/api/stories')
+        .then(res => res.json())
+        .then(json => { store.dispatch(setStoryCount(json.length));
+                      })
+        .catch(err => err);
   }
   render() {
     return (

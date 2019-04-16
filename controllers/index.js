@@ -1,3 +1,4 @@
-const test = require('./test')
+const test = require('./test');
+const stories = require('./stories')
 
-module.exports = { test }
+module.exports = { test,stories };

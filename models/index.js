@@ -1,3 +1,4 @@
 const { getAllTest } = require('./test');
+const { getUserStories } = require('./stories');
 
-module.exports = { getAllTest }
+module.exports = { getAllTest,getUserStories };
