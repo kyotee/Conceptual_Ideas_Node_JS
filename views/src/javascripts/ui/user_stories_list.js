@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import UserStoriesRedux from '../containers/userStoriesRedux.js';
 import * as html2canvas from 'html2canvas';
 import * as jsPDF from 'jspdf';
+import * as axios from 'axios';
 import PropTypes from 'prop-types';
 import "../../stylesheets/user_stories.scss";
 
@@ -54,6 +55,17 @@ class UserStoriesList extends Component {
 
 		return currentStories;
 	}
+	test() {
+		axios.post(`/api/create_story`, { 
+			userFirstName: "Hello" 
+		})
+		.then(res => {
+			console.log("Story creation successful.");
+		})
+		.catch(error => {
+			console.log("Story creation unsuccessful.");
+		});
+	}
 	render() {
 		const { storyCount,addStoryCount,deleteStoryCount,stories } = this.props;
 		return (
@@ -64,6 +76,7 @@ class UserStoriesList extends Component {
 				<div id="story-print">
 					{this.stories(storyCount,stories)}
 				</div>
+				<button className="square" onClick={() => this.test()} />
 			</div>
 		);
 	}
