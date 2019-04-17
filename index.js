@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require("body-parser");
 const path = require('path');
 const generatePassword = require('password-generator');
 
@@ -19,7 +20,6 @@ if (process.env.NODE_ENV === "production") {
   });
 
   con.getConnection(function(err, connection) {
-    // connected! (unless `err` is set)
     connection.release();
   });
 
@@ -44,14 +44,18 @@ if (process.env.NODE_ENV === "production") {
   global.con = con;
 }
 
-// Serve static files from the React app
+// serve static files from the React app
 app.use(express.static(path.join(__dirname, 'views/build')));
+// use body-parser as middlewear
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.get("/api/test", test.test);
 app.get("/api/testdb", test.testdb);
 app.get("/api/stories", stories.show_stories);
+app.post("/api/create_story", stories.create_stories);
 
-// The "catchall" handler: for any request that doesn't
+// the "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname+'/views/build/index.html'));

@@ -45,6 +45,8 @@ const querying = (connection,query,status) => {
 }
 
 exports.seedData = function() {
+	let connections = [];
+
 	console.log("Seeding database ...");
 
 	const conLocal = mysql.createConnection({
@@ -63,65 +65,69 @@ exports.seedData = function() {
 		console.log('-Local database connection established.-');
 	});
 
-	Object.keys(queryListTablesDelete).forEach(function(key) {
-  		querying(conLocal,queryListTablesDelete[key], key);
-	})
+	connections.push(conLocal);
 
-	Object.keys(queryListTables).forEach(function(key) {
-  		querying(conLocal,queryListTables[key], key);
-	})
+	const conProduction = mysql.createConnection({
+	    // server database for production
+	    host     : 'us-cdbr-iron-east-03.cleardb.net',
+	    user     : 'b1716937e432f2',
+	    password : '5bb18616',
+	    database : 'heroku_9705d094c064be3'
+	});	
 
-	Object.keys(queryListRecords).forEach(function(key,index) {
-		switch(index)
-		{
-			// user table seed data
-		    case 0:
-		    	let usersData = [];
+	conProduction.connect((err) => {
+		if(err){
+			console.log('Error connecting to Db');
+		return;
+	}
+		console.log('-Production database connection established.-');
+	});
 
-		    	usersData.push("('admin', 'admin@hotmail.com', 'admin1')");
+	connections.push(conProduction);
 
-		        for (let i = 0; i < 50; i++) { 
-		        	usersData.push(`('${faker.name.firstName()}', '${faker.name.firstName()}@fake${i}.com', '${encrypt("password1")}')`);
-				}
-				
-				queryListRecords[key] += usersData.join(", ");
-		        break;
-		    case 1:
-		        // stories table seed data
-		        let storiesData = [];
+	for (let c = 0; c < connections.length; c++) {
+		Object.keys(queryListTablesDelete).forEach(function(key) {
+	  		querying(connections[c],queryListTablesDelete[key], key);
+		})
 
- 		        for (let i = 0; i < 3; i++) { 
-		        	storiesData.push(`('1', 'title-${i}', 'given-${i}', 'when-${i}', 'then-${i}')`);
-				}       
+		Object.keys(queryListTables).forEach(function(key) {
+	  		querying(connections[c],queryListTables[key], key);
+		})
 
-				queryListRecords[key] += storiesData.join(", ");
-		        break;
-		    default:
-		        break;
-		}
+		Object.keys(queryListRecords).forEach(function(key,index) {
+			switch(index)
+			{
+				// user table seed data
+			    case 0:
+			    	let usersData = [];
 
-  		querying(conLocal,queryListRecords[key], key);
-	})
+			    	usersData.push("('admin', 'admin@hotmail.com', 'admin1')");
 
-	conLocal.end();
-	console.log("");
+			        for (let i = 0; i < 50; i++) { 
+			        	usersData.push(`('${faker.name.firstName()}', '${faker.name.firstName()}@fake${i}.com', '${encrypt("password1")}')`);
+					}
+					
+					queryListRecords[key] += usersData.join(", ");
+			        break;
+			    case 1:
+			        // stories table seed data
+			        let storiesData = [];
+			        let admin_id = connections[c].config.host == 'localhost' ? 1 : 2;  // clearDB increments by 10 at 2
 
-	// const conProduction = mysql.createConnection({
-	//     // server database for production
-	//     host     : 'us-cdbr-iron-east-03.cleardb.net',
-	//     user     : 'b1716937e432f2',
-	//     password : '5bb18616',
-	//     database : 'heroku_9705d094c064be3'
-	// });	
+	 		        for (let i = 0; i < 3; i++) { 
+			        	storiesData.push(`('${admin_id}', 'title-${i}', 'given-${i}', 'when-${i}', 'then-${i}')`);
+					}       
 
-	// conProduction.connect((err) => {
-	// 	if(err){
-	// 		console.log('Error connecting to Db');
-	// 	return;
-	// }
-	// 	console.log('-Production database connection established.-');
-	// });
+					queryListRecords[key] += storiesData.join(", ");
+			        break;
+			    default:
+			        break;
+			}
 
-	// conProduction.end();
-	// console.log("");
+	  		querying(connections[c],queryListRecords[key], key);
+		})
+
+		connections[c].end();
+		console.log("");
+	}
 }

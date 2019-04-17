@@ -22,6 +22,7 @@
   "homepage": "https://github.com/tamkylet/Conceptual_Ideas_Node_JS-tamkylet#readme",
   "dependencies": {
     "asset": "^0.4.13",
+    "body-parser": "^1.18.3",
     "chromedriver": "^2.46.0",
     "crypto": "^1.0.1",
     "express": "^4.16.4",
