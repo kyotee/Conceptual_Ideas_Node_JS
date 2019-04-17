@@ -16,8 +16,7 @@ class UserStoriesListRedux extends Component {
       .then(res => res.json())
       .then(json => { store.dispatch(setStories(json));
                       store.dispatch(setStoryCount(json.length));  
-                      console.log(json);
-                      console.log(json.length);               
+                      alert(json);            
                     })
       .catch(err => err);
   }
