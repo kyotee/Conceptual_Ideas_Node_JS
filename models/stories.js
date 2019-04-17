@@ -1,5 +1,6 @@
 exports.show_stories_model = function(callback) {
-	let query = "SELECT * FROM stories S WHERE S.users_id = 1"; 
+	let admin_id = con.config.host == 'localhost' ? 1 : 2;  // clearDB increments by 10 at 2
+	let query = `SELECT * FROM stories S WHERE S.users_id = ${admin_id}`; 
 
 	con.query(query, (err,rows) => {
 		if (err) {
