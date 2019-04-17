@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import UserStoriesRedux from '../containers/userStoriesRedux.js';
+import { eventListenerMacro } from '../helpers/event_listeners.js';
 import * as html2canvas from 'html2canvas';
 import * as jsPDF from 'jspdf';
 import * as axios from 'axios';
@@ -15,7 +16,7 @@ class UserStoriesList extends Component {
 		this.deleteStory = this.deleteStory.bind(this);
 	}
 	componentDidMount() {
-
+		// alert(this.props.storyCount);
 	}
 	printDocument() {
 		const input = document.getElementById('story-print');
@@ -68,6 +69,7 @@ class UserStoriesList extends Component {
 	}
 	render() {
 		const { storyCount,addStoryCount,deleteStoryCount,stories } = this.props;
+
 		return (
 			<div>
 				<p id="printing" onClick={this.printDocument}>Print</p>

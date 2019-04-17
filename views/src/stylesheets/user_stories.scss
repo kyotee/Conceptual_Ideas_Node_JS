@@ -84,7 +84,7 @@
 	display: inline-block	
 }
 
-.editing, #printing, #add-story, #delete-story {
+.editing, #printing, #add-story, #delete-story, .deleting {
 	width: 5em;
 	height: 2em;
 	background-color: #008080;
@@ -92,6 +92,7 @@
 	color: white
 }
 
-.editing {
-	float: right
+.editing, .deleting {
+	float: right;
+	margin-right: 0.5em
 }

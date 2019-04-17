@@ -47,7 +47,8 @@ class UserStories extends Component {
 						<div className="title-container">
 							<div className="title-image"></div>
 							<p className="title">{title}</p>
-							<p className="editing">Edit</p>
+							<p className="deleting">X</p>
+							<p className="editing" id={"editing-"+stories_id}>Edit</p>
 							<input className="edit-title" type="text"></input>
 						</div>
 						<div className="title-line"></div>
