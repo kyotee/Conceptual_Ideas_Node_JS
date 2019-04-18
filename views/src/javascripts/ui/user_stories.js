@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import "../../stylesheets/user_stories.scss";
 
 class UserStories extends Component {
+	state = { edit: false }
+
 	constructor(props) {
 		super(props);
 	}
@@ -15,7 +17,8 @@ class UserStories extends Component {
 		let offset = this.props.position*3;
 
 		edit.addEventListener("click", function() {
-			this.props.changeEdit(!this.props.edit);
+			this.setState({ edit: !this.state.edit })
+
 			title.classList.toggle('edit');
 			editTitle.classList.toggle('edit');
 			bodyText[offset+0].classList.toggle('edit');
@@ -25,7 +28,7 @@ class UserStories extends Component {
 			editBodyText[offset+1].classList.toggle('edit');
 			editBodyText[offset+2].classList.toggle('edit');
 
-			if (this.props.edit) {
+			if (this.state.edit) {
 				editTitle.value = title.innerHTML;
 				editBodyText[offset+0].value = bodyText[offset+0].innerHTML;
 				editBodyText[offset+1].value = bodyText[offset+1].innerHTML;

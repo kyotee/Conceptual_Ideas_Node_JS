@@ -16,7 +16,16 @@ class UserStoriesList extends Component {
 		this.deleteStory = this.deleteStory.bind(this);
 	}
 	componentDidMount() {
-		// alert(this.props.storyCount);
+		let editingStories = this.props.stories.map(({ stories_id }) => "editing-"+stories_id).toString().replace(/,/g, ' ');
+		
+		const addRemoveStory = (story) => {
+
+		}
+
+		eventListenerMacro(`${editingStories}`, 'click', function(e) {
+			// alert(this.id);
+			// addRemoveStory();
+		});
 	}
 	printDocument() {
 		const input = document.getElementById('story-print');
