@@ -39,12 +39,26 @@ class UserStoriesList extends Component {
 			});
 	}
 	addStory() {
-		if (this.props.storyCount < 5)
+		if (this.props.storyCount < 5) {
 			this.props.addStoryCount(this.props.storyCount+1);
+
+			axios.post(`/api/create_story`, { 
+				user_id: 1
+			})
+			.then(res => {
+				console.log("Story creation successful.");
+			})
+			.catch(error => {
+				console.log("Story creation unsuccessful.");
+			});
+		}
 	}
 	deleteStory() {
-		if (this.props.storyCount > 0)
+		if (this.props.storyCount > 0) {
 			this.props.deleteStoryCount(this.props.storyCount-1);
+
+			// axios request
+		}
 	}
 	stories(storyCount,stories) {
 		let currentStories = [];

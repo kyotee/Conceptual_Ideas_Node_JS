@@ -54,6 +54,7 @@ app.get("/api/test", test.test);
 app.get("/api/testdb", test.testdb);
 app.get("/api/stories", stories.show_stories);
 app.post("/api/create_story", stories.create_stories);
+app.delete("/api/delete_story", stories.destroy_stories);
 
 // the "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.

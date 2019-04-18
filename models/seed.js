@@ -115,7 +115,7 @@ exports.seedData = function() {
 			        let admin_id = connections[c].config.host == 'localhost' ? 1 : 2;  // clearDB increments by 10 at 2
 
 	 		        for (let i = 0; i < 3; i++) { 
-			        	storiesData.push(`('${admin_id}', 'title-${i}', 'given-${i}', 'when-${i}', 'then-${i}')`);
+			        	storiesData.push(`('${admin_id}', 'Title Text', 'Given text', 'When text', 'Then text')`);
 					}       
 
 					queryListRecords[key] += storiesData.join(", ");
