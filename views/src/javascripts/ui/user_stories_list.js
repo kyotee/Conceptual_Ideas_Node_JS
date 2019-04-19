@@ -41,6 +41,7 @@ class UserStoriesList extends Component {
 	addUserStory() {
 		if (this.props.storyCount < 5) {
 			this.props.addStoryCount(this.props.storyCount+1);
+			this.props.addStory(1);    // '1' currently represents admin
 
 			axios.post(`/api/create_story`, { 
 				user_id: 1
