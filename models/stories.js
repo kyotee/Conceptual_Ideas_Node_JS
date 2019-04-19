@@ -13,7 +13,7 @@ exports.show_stories_model = function(callback) {
 
 exports.create_stories_model = function(user_id,callback) {
 	let admin_id = con.config.host == 'localhost' ? 1 : 2;  // clearDB increments by 10 at 2
-	let query = `INSERT INTO stories (users_id,title,given_case,when_case,then_case) VALUES ('${user_id}', 'Title Text', 'Given text', 'When text', 'Then text')`;
+	let query = `INSERT INTO stories (users_id,title,given_case,when_case,then_case) VALUES ('${admin_id}', 'Title Text', 'Given text', 'When text', 'Then text')`;
 
 	con.query(query, (err,rows) => {
 		if (err) {

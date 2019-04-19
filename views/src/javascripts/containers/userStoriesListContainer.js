@@ -6,7 +6,8 @@ import * as UserStoriesListActions from '../actions/userStoriesList';
 function mapStateToProps(state) {
   return {
   	storyCount: state.userStoriesList.storyCount,
-  	stories: state.userStoriesList.stories
+  	stories: state.userStoriesList.stories,
+  	isProduction: state.userStoriesList.isProduction
   }
 }
 

@@ -27,3 +27,18 @@ export function setStories(stories) {
     stories: stories
   };
 }
+
+export function addStory(user_id) {
+  return {
+    type: C.ADD_STORY,
+    user_id: user_id
+  };
+}
+
+export function deleteStory(story_id, user_id) {
+  return {
+    type: C.DELETE_STORY,
+    story_id: story_id,
+    user_id: user_id
+  };
+}

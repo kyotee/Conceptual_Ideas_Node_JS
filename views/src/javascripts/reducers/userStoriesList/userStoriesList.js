@@ -2,7 +2,8 @@ import C from '../../actions/userStoriesListTypes.js';
 
 const initalState = {
   storyCount: 0,
-  stories: []
+  stories: [],
+  isProduction: true
 };
 
 export default function userStoriesList(state = initalState, action) {
@@ -15,6 +16,8 @@ export default function userStoriesList(state = initalState, action) {
 	return { ...state, storyCount: action.storyCount };
   case C.SET_STORIES:
     return { ...state, stories: action.stories };
+  case C.ADD_STORY:
+    console.log("Hit");
   default:
     return state;
   }

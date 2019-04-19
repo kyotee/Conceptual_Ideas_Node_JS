@@ -12,8 +12,8 @@ class UserStoriesList extends Component {
 	constructor(props) {
 		super(props);
 
-		this.addStory = this.addStory.bind(this);
-		this.deleteStory = this.deleteStory.bind(this);
+		this.addUserStory = this.addUserStory.bind(this);
+		this.deleteUserStory = this.deleteUserStory.bind(this);
 	}
 	componentDidMount() {
 		let editingStories = this.props.stories.map(({ stories_id }) => "editing-"+stories_id).toString().replace(/,/g, ' ');
@@ -38,7 +38,7 @@ class UserStoriesList extends Component {
 			    pdf.save("user_stories.pdf");
 			});
 	}
-	addStory() {
+	addUserStory() {
 		if (this.props.storyCount < 5) {
 			this.props.addStoryCount(this.props.storyCount+1);
 
@@ -53,10 +53,10 @@ class UserStoriesList extends Component {
 			});
 		}
 	}
-	deleteStory() {
+	deleteUserStory() {
 		if (this.props.storyCount > 0) {
 			this.props.deleteStoryCount(this.props.storyCount-1);
-
+			// to be delete and moved to "addRemoveStory"
 			// axios request
 		}
 	}
@@ -91,13 +91,13 @@ class UserStoriesList extends Component {
 		});
 	}
 	render() {
-		const { storyCount,addStoryCount,deleteStoryCount,stories } = this.props;
+		const { storyCount,addStoryCount,deleteStoryCount,stories,addStory,deleteStory,isProduction } = this.props;
 
 		return (
 			<div>
 				<p id="printing" onClick={this.printDocument}>Print</p>
-				<p id="delete-story" onClick={this.deleteStory}>Delete Story</p>
-				<p id="add-story" onClick={this.addStory}>Add Story</p>
+				<p id="delete-story" onClick={this.deleteUserStory}>Delete Story</p>
+				<p id="add-story" onClick={this.addUserStory}>Add Story</p>
 				<div id="story-print">
 					{this.stories(storyCount,stories)}
 				</div>
@@ -111,7 +111,10 @@ UserStoriesList.propTypes = {
   storyCount: PropTypes.number.isRequired,
   addStoryCount: PropTypes.func.isRequired,
   deleteStoryCount: PropTypes.func.isRequired,
-  stories: PropTypes.array.isRequired
+  stories: PropTypes.array.isRequired,
+  addStory: PropTypes.func.isRequired,
+  deleteStory: PropTypes.func.isRequired,
+  isProduction: PropTypes.bool.isRequired
 };
 
 export default UserStoriesList;

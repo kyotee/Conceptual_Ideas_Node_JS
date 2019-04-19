@@ -16,7 +16,7 @@ class UserStoriesListRedux extends Component {
   getUserStories = () => {
     fetch('/api/stories')
       .then(res => res.json())
-      .then(json => { 
+      .then(json => {
                       store.dispatch(setStories(json));
                       store.dispatch(setStoryCount(json.length));
                       this.setState({ count: json.length });       
