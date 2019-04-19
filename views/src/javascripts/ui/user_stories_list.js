@@ -79,17 +79,6 @@ class UserStoriesList extends Component {
 
 		return currentStories;
 	}
-	test() {
-		axios.post(`/api/create_story`, { 
-			userFirstName: "Hello" 
-		})
-		.then(res => {
-			console.log("Story creation successful.");
-		})
-		.catch(error => {
-			console.log("Story creation unsuccessful.");
-		});
-	}
 	render() {
 		const { storyCount,addStoryCount,deleteStoryCount,stories,addStory,deleteStory,isProduction } = this.props;
 		return (
@@ -100,7 +89,6 @@ class UserStoriesList extends Component {
 				<div id="story-print">
 					{this.stories(storyCount,stories)}
 				</div>
-				<button className="square" onClick={() => this.test()} />
 			</div>
 		);
 	}

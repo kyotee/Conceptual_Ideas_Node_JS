@@ -9,9 +9,6 @@ import About from './javascripts/ui/about.js';
 import Contact from './javascripts/ui/contact.js';
 import SignupSigninForm from './javascripts/ui/signup_signin_form.js';
 import UserStoriesListRedux from './javascripts/containers/userStoriesListRedux.js';
-import App from './javascripts/ui/app.js';
-import App1 from './javascripts/ui/app1.js';
-import CounterRedux from './javascripts/containers/counterRedux.js';
 
 ReactDOM.render(<NavigationBar/>, document.getElementById('nav'));
 
@@ -31,12 +28,6 @@ const routing = (
           render={(props) => <SignupSigninForm {...props} formType={"Sign in"} />}
         />
         <Route path="/user_stories" component={UserStoriesListRedux} />
-        <Route path="/app" component={App} />
-        <Route path="/app1" component={App1} />
-        <Route
-          path='/app3'
-          render={(props) => <CounterRedux {...props} counterNum={10} />}
-        />
         <Route component={Notfound} />
       </Switch>
     </div>

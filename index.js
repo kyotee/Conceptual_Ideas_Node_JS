@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const path = require('path');
 const generatePassword = require('password-generator');
 
-var { environment,test,stories } = require("./controllers");
+var { environment,stories } = require("./controllers");
 
 const app = express();
 
@@ -51,8 +51,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/api/environment", environment.environment);
-app.get("/api/test", test.test);
-app.get("/api/testdb", test.testdb);
 app.get("/api/stories", stories.show_stories);
 app.post("/api/create_story", stories.create_stories);
 app.delete("/api/delete_story", stories.destroy_stories);
