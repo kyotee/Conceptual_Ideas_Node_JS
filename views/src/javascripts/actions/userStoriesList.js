@@ -1,5 +1,12 @@
 import C from './userStoriesListTypes.js';
 
+export function findEnvironment(isProduction) {
+  return {
+    type: C.ENVIRONMENT,
+    isProduction: isProduction
+  };
+}
+
 export function setStoryCount(storyCount) {
   return {
     type: C.SET_STORIES_COUNT,

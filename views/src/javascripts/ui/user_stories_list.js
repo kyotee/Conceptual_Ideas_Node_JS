@@ -92,7 +92,6 @@ class UserStoriesList extends Component {
 	}
 	render() {
 		const { storyCount,addStoryCount,deleteStoryCount,stories,addStory,deleteStory,isProduction } = this.props;
-
 		return (
 			<div>
 				<p id="printing" onClick={this.printDocument}>Print</p>

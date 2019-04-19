@@ -18,6 +18,8 @@ export default function userStoriesList(state = initalState, action) {
     return { ...state, stories: action.stories };
   case C.ADD_STORY:
     console.log("Hit");
+  case C.ENVIRONMENT:
+    return { ...state, isProduction: action.isProduction };
   default:
     return state;
   }

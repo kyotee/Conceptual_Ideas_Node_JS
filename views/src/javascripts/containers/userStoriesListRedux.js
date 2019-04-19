@@ -3,12 +3,14 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import UserStoriesListContainer from './userStoriesListContainer';
 import configureStore from '../store/configureStore';
-import {setStoryCount,setStories} from '../actions/userStoriesList';
+import {findEnvironment,setStoryCount,setStories} from '../actions/userStoriesList';
 
 const store = configureStore();
 
 class UserStoriesListRedux extends Component {
-  state = { count: null }
+  state = {  count: null,
+             isProduction: null
+          }
 
   componentWillMount() {
     this.getUserStories();
@@ -22,9 +24,16 @@ class UserStoriesListRedux extends Component {
                       this.setState({ count: json.length });       
                     })
       .catch(err => err);
+    fetch('/api/environment')
+      .then(res => res.json())
+      .then(json => {
+                      store.dispatch(findEnvironment(json));
+                      this.setState({ isProduction: json });   
+                    })
+      .catch(err => err);
   }
   render() {
-        if (this.state.count === null) {
+        if (this.state.count === null || this.state.isProduction === null) {
         return null;
     }
 
