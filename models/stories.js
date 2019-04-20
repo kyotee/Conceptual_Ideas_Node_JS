@@ -23,3 +23,15 @@ exports.create_stories_model = function(user_id,callback) {
 		return callback(rows);
 	});
 }
+
+exports.destroy_stories_model = function(stories_id,callback) {
+	let query = `DELETE FROM stories WHERE stories_id = ${stories_id}`;
+
+	con.query(query, (err,rows) => {
+		if (err) {
+			console.log("Database query error.");
+		}
+		
+		return callback(rows);
+	});
+}

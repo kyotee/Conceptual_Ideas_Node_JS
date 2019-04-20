@@ -13,18 +13,35 @@ class UserStoriesList extends Component {
 		super(props);
 
 		this.addUserStory = this.addUserStory.bind(this);
-		this.deleteUserStory = this.deleteUserStory.bind(this);
 	}
 	componentDidMount() {
+		let deletingStories = this.props.stories.map(({ stories_id }) => "deleting-"+stories_id).toString().replace(/,/g, ' ');
 		let editingStories = this.props.stories.map(({ stories_id }) => "editing-"+stories_id).toString().replace(/,/g, ' ');
 		
-		const addRemoveStory = (story) => {
+		const deleteUserStory = (stories_id) => {
+			if (this.props.storyCount > 0) {
+				this.props.deleteStoryCount(this.props.storyCount-1);
+				this.props.deleteStory(stories_id);
 
+				axios.post(`/api/delete_story`, { 
+					stories_id: stories_id
+				})
+				.then(res => {
+					console.log("Story deletion successful.");
+				})
+				.catch(error => {
+					console.log("Story deletion unsuccessful.");
+				});
+			}
 		}
+
+		eventListenerMacro(`${deletingStories}`, 'click', function(e) {
+			deleteUserStory(this.id);
+		});
 
 		eventListenerMacro(`${editingStories}`, 'click', function(e) {
 			// alert(this.id);
-			// addRemoveStory();
+			// deleteUserStory(this.id);
 		});
 	}
 	printDocument() {
@@ -54,13 +71,6 @@ class UserStoriesList extends Component {
 			});
 		}
 	}
-	deleteUserStory() {
-		if (this.props.storyCount > 0) {
-			this.props.deleteStoryCount(this.props.storyCount-1);
-			// to be delete and moved to "addRemoveStory"
-			// axios request
-		}
-	}
 	stories(storyCount,stories) {
 		let currentStories = [];
 
@@ -85,7 +95,6 @@ class UserStoriesList extends Component {
 		return (
 			<div>
 				<p id="printing" onClick={this.printDocument}>Print</p>
-				<p id="delete-story" onClick={this.deleteUserStory}>Delete Story</p>
 				<p id="add-story" onClick={this.addUserStory}>Add Story</p>
 				<div id="story-print">
 					{this.stories(storyCount,stories)}

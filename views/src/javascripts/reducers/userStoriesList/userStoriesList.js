@@ -37,6 +37,8 @@ export default function userStoriesList(state = initalState, action) {
           };
 
     return { ...state, stories: state.stories.concat(newStory)};
+  case C.DELETE_STORY:
+    return { ...state, stories: state.stories.filter(function(x){return x.stories_id != action.stories_id; })};
   case C.ENVIRONMENT:
     return { ...state, isProduction: action.isProduction };
   default:

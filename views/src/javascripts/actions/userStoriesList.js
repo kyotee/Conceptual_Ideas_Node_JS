@@ -42,10 +42,9 @@ export function addStory(user_id) {
   };
 }
 
-export function deleteStory(story_id, user_id) {
+export function deleteStory(story_id) {
   return {
     type: C.DELETE_STORY,
-    story_id: story_id,
-    user_id: user_id
+    story_id: story_id
   };
 }

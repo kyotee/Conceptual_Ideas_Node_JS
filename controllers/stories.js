@@ -1,4 +1,4 @@
-const { show_stories_model,create_stories_model } = require('../models');
+const { show_stories_model,create_stories_model,destroy_stories_model } = require('../models');
 
 module.exports = {
     show_stories: (req, res) => {
@@ -13,7 +13,8 @@ module.exports = {
 		});
 	},
 	destroy_stories: (req, res) => {
-		var user_name=req.body.userFirstName;
-		console.log(user_name);
+		destroy_stories_model(req.body.stories_id, function(result){
+			console.log(result);
+		});
 	}
 };

@@ -50,7 +50,7 @@ class UserStories extends Component {
 						<div className="title-container">
 							<div className="title-image"></div>
 							<p className="title">{title}</p>
-							<p className="deleting">X</p>
+							<p className="deleting" id={"deleting-"+stories_id}>X</p>
 							<p className="editing" id={"editing-"+stories_id}>Edit</p>
 							<input className="edit-title" type="text"></input>
 						</div>
