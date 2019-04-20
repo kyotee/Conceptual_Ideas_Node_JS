@@ -23,7 +23,7 @@ class UserStoriesList extends Component {
 				this.props.deleteStoryCount(this.props.storyCount-1);
 				this.props.deleteStory(stories_id);
 
-				axios.post(`/api/delete_story`, { 
+				axios.delete(`/api/delete_story`, { 
 					stories_id: stories_id
 				})
 				.then(res => {
@@ -36,7 +36,7 @@ class UserStoriesList extends Component {
 		}
 
 		eventListenerMacro(`${deletingStories}`, 'click', function(e) {
-			deleteUserStory(this.id);
+			deleteUserStory(parseInt(this.id.split('-')[1]));
 		});
 
 		eventListenerMacro(`${editingStories}`, 'click', function(e) {
