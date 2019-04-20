@@ -13,7 +13,7 @@ module.exports = {
 		});
 	},
 	destroy_stories: (req, res) => {
-		destroy_stories_model(req.body.stories_id, function(result){
+		destroy_stories_model(req.query.stories_id, function(result){
 			console.log(result);
 		});
 	}

@@ -23,8 +23,10 @@ class UserStoriesList extends Component {
 				this.props.deleteStoryCount(this.props.storyCount-1);
 				this.props.deleteStory(stories_id);
 
-				axios.delete(`/api/delete_story`, { 
-					stories_id: stories_id
+				axios.delete(`/api/delete_story`,  { 
+					params: {	
+								stories_id: stories_id
+							} 
 				})
 				.then(res => {
 					console.log("Story deletion successful.");
@@ -35,14 +37,16 @@ class UserStoriesList extends Component {
 			}
 		}
 
-		eventListenerMacro(`${deletingStories}`, 'click', function(e) {
-			deleteUserStory(parseInt(this.id.split('-')[1]));
-		});
+		if (deletingStories.length > 0) {
+			eventListenerMacro(`${deletingStories}`, 'click', function(e) {
+				deleteUserStory(parseInt(this.id.split('-')[1]));
+			});
+		}
 
-		eventListenerMacro(`${editingStories}`, 'click', function(e) {
-			// alert(this.id);
-			// deleteUserStory(this.id);
-		});
+		// eventListenerMacro(`${editingStories}`, 'click', function(e) {
+		// 	// alert(this.id);
+		// 	// deleteUserStory(this.id);
+		// });
 	}
 	printDocument() {
 		const input = document.getElementById('story-print');
