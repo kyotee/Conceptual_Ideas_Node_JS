@@ -7,6 +7,8 @@ class UserStories extends Component {
 
 	constructor(props) {
 		super(props);
+
+		this.deleteUserStory = this.deleteUserStory.bind(this);
 	}
 	componentDidMount() {
 		let title = document.getElementsByClassName('title')[this.props.position];
@@ -41,8 +43,11 @@ class UserStories extends Component {
 			}
 		}.bind(this));
 	}
+	deleteUserStory(stories_id) {
+		this.props.parentDelete(stories_id);
+	}
 	render() {
-		const { changeEdit,position,stories_id,users_id,title,given_case,when_case,then_case } = this.props;
+		const { changeEdit,position,stories_id,users_id,title,given_case,when_case,then_case, parentDelete } = this.props;
 		return (
 			<div>
 				<div className="user-story">
@@ -50,7 +55,7 @@ class UserStories extends Component {
 						<div className="title-container">
 							<div className="title-image"></div>
 							<p className="title">{title}</p>
-							<p className="deleting" id={"deleting-"+stories_id}>X</p>
+							<p className="deleting" onClick={() => this.deleteUserStory(stories_id)}>X</p>
 							<p className="editing" id={"editing-"+stories_id}>Edit</p>
 							<input className="edit-title" type="text"></input>
 						</div>
@@ -81,7 +86,8 @@ UserStories.propTypes = {
   title: PropTypes.string.isRequired,
   given_case: PropTypes.string.isRequired,
   when_case: PropTypes.string.isRequired,
-  then_case: PropTypes.string.isRequired
+  then_case: PropTypes.string.isRequired,
+  parentDelete: PropTypes.func.isRequired
 };
 
 export default UserStories;

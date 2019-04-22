@@ -19,6 +19,7 @@ class UserStoriesRedux extends Component {
 							  given_case={this.props.given_case}
 							  when_case={this.props.when_case}
 							  then_case={this.props.then_case}
+                parentDelete={this.props.parentDelete}
         />
       </Provider>
     );

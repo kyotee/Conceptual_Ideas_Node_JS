@@ -13,50 +13,31 @@ class UserStoriesList extends Component {
 		super(props);
 
 		this.addUserStory = this.addUserStory.bind(this);
+		this.deleteUserStory = this.deleteUserStory.bind(this);
 	}
 	componentDidMount() {
-		let deletingStories = this.props.stories.map(({ stories_id }) => "deleting-"+stories_id).toString().replace(/,/g, ' ');
-		let editingStories = this.props.stories.map(({ stories_id }) => "editing-"+stories_id).toString().replace(/,/g, ' ');
+		// let editingStories = this.props.stories.map(({ stories_id }) => "editing-"+stories_id).toString().replace(/,/g, ' ');
 
-		const deleteUserStory = (stories_id) => {
-			if (this.props.storyCount > 0) {
-				this.props.deleteStoryCount(this.props.storyCount-1);
-				this.props.deleteStory(stories_id);
+		// const editUserStory = (stories_id) => {
+		// 	// use sql to find out next auto increment upon refresh
 
-				axios.delete(`/api/delete_story`,  { 
-					params: {	
-								stories_id: stories_id
-							} 
-				})
-				.then(res => {
-					console.log("Story deletion successful.");
-				})
-				.catch(error => {
-					console.log("Story deletion unsuccessful.");
-				});
-			}
-		}
+		// 	// editStories should copy the state to be used ... pass in stories_id
+		// 	// if it works then send back request
 
-		const editUserStory = (stories_id) => {
-			// use sql to find out next auto increment upon refresh
+		// 	this.props.updateEditState(stories_id);
+		// }
 
-			// editStories should copy the state to be used ... pass in stories_id
-			// if it works then send back request
+		// // document.getElementById('story-print').addEventListener("click", function() {
+		// // 	deletingStories = this.props.stories.map(({ stories_id }) => "deleting-"+stories_id).toString().replace(/,/g, ' ');
+		// // 	console.log(deletingStories);
+		// // }.bind(this));
 
-			this.props.updateEditState(stories_id);
-		}
 
-		if (deletingStories.length > 0) {
-			eventListenerMacro(`${deletingStories}`, 'click', function(e) {
-				deleteUserStory(parseInt(this.id.split('-')[1]));
-			});
-		}
-
-		if (editingStories.length > 0) {
-			eventListenerMacro(`${editingStories}`, 'click', function(e) {
-				editUserStory(parseInt(this.id.split('-')[1]));
-			});
-		}
+		// if (editingStories.length > 0) {
+		// 	eventListenerMacro(`${editingStories}`, 'click', function(e) {
+		// 		editUserStory(parseInt(this.id.split('-')[1]));
+		// 	});
+		// }
 	}
 	printDocument() {
 		const input = document.getElementById('story-print');
@@ -85,6 +66,27 @@ class UserStoriesList extends Component {
 			});
 		}
 	}
+	// editUserStory() {
+	// 	console.log("Hit");
+	// }
+	deleteUserStory(stories_id) {
+		if (this.props.storyCount > 0) {
+			this.props.deleteStoryCount(this.props.storyCount-1);
+			this.props.deleteStory(stories_id);
+
+			axios.delete(`/api/delete_story`, { 
+				params: {	
+							stories_id: stories_id
+						} 
+			})
+			.then(res => {
+				console.log("Story deletion successful.");
+			})
+			.catch(error => {
+				console.log("Story deletion unsuccessful.");
+			});
+		}
+	}
 	stories(storyCount,stories) {
 		let currentStories = [];
 
@@ -98,6 +100,7 @@ class UserStoriesList extends Component {
 								  given_case={stories[index].given_case}
 								  when_case={stories[index].when_case}
 								  then_case={stories[index].then_case}
+								  parentDelete={this.deleteUserStory}
 				/>
 			);
 		}
