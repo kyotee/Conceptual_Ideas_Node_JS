@@ -3,8 +3,9 @@ import C from '../../actions/userStoriesListTypes.js';
 const initalState = {
   storyCount: 0,
   stories: [],
-  isProduction: true,
-  editStates: []
+  editStates: [],
+  databaseOffset: 0,
+  isProduction: true
 };
 
 export default function userStoriesList(state = initalState, action) {
@@ -18,18 +19,11 @@ export default function userStoriesList(state = initalState, action) {
   case C.SET_STORIES:
     return { ...state, stories: action.stories };
   case C.ADD_STORY:
-    let highestIndex = 0;
-
-    for (let index = 0; index < state.stories.length; index++) {
-      if (state.stories[index].stories_id > highestIndex)
-        highestIndex = state.stories[index].stories_id;
-    }
-
-    // clearDB (MySQL) used in production auto increments by 10
-    state.isProduction === true ? highestIndex += 10 : highestIndex += 1;
-
+    let nextHighestIndex = state.databaseOffset;
+    let addingStory = state.editStates;
+    
     const newStory = {
-            stories_id: highestIndex,
+            stories_id: state.databaseOffset,
             users_id: action.user_id,
             title: 'Title Text',
             given_case: 'Given text',
@@ -37,7 +31,11 @@ export default function userStoriesList(state = initalState, action) {
             then_case: 'Then text'
           };
 
-    return { ...state, stories: state.stories.concat(newStory), editStates: state.editStates.push(false)};
+    // clearDB (MySQL) used in production auto increments by 10
+    state.isProduction === true ? nextHighestIndex += 10 : nextHighestIndex += 1;
+    addingStory.push(false);
+
+    return { ...state, stories: state.stories.concat(newStory), editStates: addingStory, databaseOffset: nextHighestIndex};
   case C.EDIT_STORY:
   
   case C.SET_EDIT_STATE:
@@ -70,6 +68,8 @@ export default function userStoriesList(state = initalState, action) {
     }
 
     return { ...state, stories: state.stories.filter(function(x){ return x.stories_id != action.stories_id; }), editStates: removingStates};
+  case C.DATABASE_INCREMENT:
+    return { ...state, databaseOffset: action.databaseOffset[0].AUTO_INCREMENT };
   case C.ENVIRONMENT:
     return { ...state, isProduction: action.isProduction };
   default:

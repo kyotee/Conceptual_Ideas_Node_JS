@@ -3,13 +3,14 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import UserStoriesListContainer from './userStoriesListContainer';
 import configureStore from '../store/configureStore';
-import {findEnvironment,setStoryCount,setStories,setEditState} from '../actions/userStoriesList';
+import {findEnvironment,databaseIncrementer,setStoryCount,setStories,setEditState} from '../actions/userStoriesList';
 
 const store = configureStore();
 
 class UserStoriesListRedux extends Component {
   state = {  count: null,
-             isProduction: null
+             isProduction: null,
+             nextIndex: null
           }
 
   componentWillMount() {
@@ -32,12 +33,18 @@ class UserStoriesListRedux extends Component {
                       this.setState({ isProduction: json });   
                     })
       .catch(err => err);
+    fetch('/api/next_stories_index')
+      .then(res => res.json())
+      .then(json => {
+                      store.dispatch(databaseIncrementer(json));
+                      this.setState({ nextIndex: json });   
+                    })
+      .catch(err => err);
   }
   render() {
-        if (this.state.count === null || this.state.isProduction === null) {
-        return null;
+        if (this.state.count === null || this.state.isProduction === null || this.state.nextIndex === null) {
+         return null;
     }
-
     return (
       <Provider store={store}>
         <UserStoriesListContainer />

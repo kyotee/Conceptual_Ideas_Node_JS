@@ -17,7 +17,7 @@ class UserStoriesList extends Component {
 	componentDidMount() {
 		let deletingStories = this.props.stories.map(({ stories_id }) => "deleting-"+stories_id).toString().replace(/,/g, ' ');
 		let editingStories = this.props.stories.map(({ stories_id }) => "editing-"+stories_id).toString().replace(/,/g, ' ');
-		
+
 		const deleteUserStory = (stories_id) => {
 			if (this.props.storyCount > 0) {
 				this.props.deleteStoryCount(this.props.storyCount-1);
@@ -38,11 +38,12 @@ class UserStoriesList extends Component {
 		}
 
 		const editUserStory = (stories_id) => {
-			this.props.updateEditState(stories_id);
-			// add and delete stories should update the states array
+			// use sql to find out next auto increment upon refresh
 
-			// this.props.editStory(stories_id,given_case,when_case,then_case);
-			// backend edit goes here
+			// editStories should copy the state to be used ... pass in stories_id
+			// if it works then send back request
+
+			this.props.updateEditState(stories_id);
 		}
 
 		if (deletingStories.length > 0) {

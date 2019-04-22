@@ -35,3 +35,15 @@ exports.destroy_stories_model = function(stories_id,callback) {
 		return callback(rows);
 	});
 }
+
+exports.next_stories_index_model = function(callback) {
+	let query = `SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name = 'stories' AND table_schema = DATABASE( )`; 
+
+	con.query(query, (err,rows) => {
+		if (err) {
+			console.log("Database query error.");
+		}
+		
+		return callback(rows);
+	});
+}

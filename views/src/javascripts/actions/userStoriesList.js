@@ -7,6 +7,13 @@ export function findEnvironment(isProduction) {
   };
 }
 
+export function databaseIncrementer(databaseOffset) {
+  return {
+    type: C.DATABASE_INCREMENT,
+    databaseOffset: databaseOffset
+  }
+}
+
 export function setStoryCount(storyCount) {
   return {
     type: C.SET_STORIES_COUNT,
