@@ -37,16 +37,25 @@ class UserStoriesList extends Component {
 			}
 		}
 
+		const editUserStory = (stories_id) => {
+			this.props.updateEditState(stories_id);
+			// add and delete stories should update the states array
+
+			// this.props.editStory(stories_id,given_case,when_case,then_case);
+			// backend edit goes here
+		}
+
 		if (deletingStories.length > 0) {
 			eventListenerMacro(`${deletingStories}`, 'click', function(e) {
 				deleteUserStory(parseInt(this.id.split('-')[1]));
 			});
 		}
 
-		// eventListenerMacro(`${editingStories}`, 'click', function(e) {
-		// 	// alert(this.id);
-		// 	// deleteUserStory(this.id);
-		// });
+		if (editingStories.length > 0) {
+			eventListenerMacro(`${editingStories}`, 'click', function(e) {
+				editUserStory(parseInt(this.id.split('-')[1]));
+			});
+		}
 	}
 	printDocument() {
 		const input = document.getElementById('story-print');
@@ -95,7 +104,7 @@ class UserStoriesList extends Component {
 		return currentStories;
 	}
 	render() {
-		const { storyCount,addStoryCount,deleteStoryCount,stories,addStory,deleteStory,isProduction } = this.props;
+		const { storyCount,addStoryCount,deleteStoryCount,stories,addStory,editStory,deleteStory,setEditState,updateEditState,editStates,isProduction } = this.props;
 		return (
 			<div>
 				<p id="printing" onClick={this.printDocument}>Print</p>
@@ -114,7 +123,11 @@ UserStoriesList.propTypes = {
   deleteStoryCount: PropTypes.func.isRequired,
   stories: PropTypes.array.isRequired,
   addStory: PropTypes.func.isRequired,
+  editStory: PropTypes.func.isRequired,
   deleteStory: PropTypes.func.isRequired,
+  setEditState: PropTypes.func.isRequired,
+  updateEditState: PropTypes.func.isRequired,
+  editStates: PropTypes.array.isRequired,
   isProduction: PropTypes.bool.isRequired
 };
 

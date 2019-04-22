@@ -7,6 +7,7 @@ function mapStateToProps(state) {
   return {
   	storyCount: state.userStoriesList.storyCount,
   	stories: state.userStoriesList.stories,
+  	editStates: state.userStoriesList.editStates,
   	isProduction: state.userStoriesList.isProduction
   }
 }

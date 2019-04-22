@@ -42,6 +42,30 @@ export function addStory(user_id) {
   };
 }
 
+export function editStory(stories_id,given_case,when_case,then_case) {
+  return {
+    type: C.EDIT_STORY,
+    stories_id: stories_id,
+    given_case: given_case,
+    when_case: when_case,
+    then_case: then_case
+  };
+}
+
+export function setEditState(storyCount) {
+  return {
+    type: C.SET_EDIT_STATE,
+    storyCount: storyCount
+  };
+}
+
+export function updateEditState(stories_id) {
+  return {
+    type: C.UPDATE_EDIT_STATE,
+    stories_id: stories_id
+  };
+}
+
 export function deleteStory(stories_id) {
   return {
     type: C.DELETE_STORY,

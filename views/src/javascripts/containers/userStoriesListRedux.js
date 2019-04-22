@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import UserStoriesListContainer from './userStoriesListContainer';
 import configureStore from '../store/configureStore';
-import {findEnvironment,setStoryCount,setStories} from '../actions/userStoriesList';
+import {findEnvironment,setStoryCount,setStories,setEditState} from '../actions/userStoriesList';
 
 const store = configureStore();
 
@@ -21,6 +21,7 @@ class UserStoriesListRedux extends Component {
       .then(json => {
                       store.dispatch(setStories(json));
                       store.dispatch(setStoryCount(json.length));
+                      store.dispatch(setEditState(json.length));
                       this.setState({ count: json.length });       
                     })
       .catch(err => err);

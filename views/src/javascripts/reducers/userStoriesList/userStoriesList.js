@@ -3,7 +3,8 @@ import C from '../../actions/userStoriesListTypes.js';
 const initalState = {
   storyCount: 0,
   stories: [],
-  isProduction: true
+  isProduction: true,
+  editStates: []
 };
 
 export default function userStoriesList(state = initalState, action) {
@@ -36,9 +37,39 @@ export default function userStoriesList(state = initalState, action) {
             then_case: 'Then text'
           };
 
-    return { ...state, stories: state.stories.concat(newStory)};
-  case C.DELETE_STORY:
-    return { ...state, stories: state.stories.filter(function(x){ return x.stories_id != action.stories_id; })};
+    return { ...state, stories: state.stories.concat(newStory), editStates: state.editStates.push(false)};
+  case C.EDIT_STORY:
+  
+  case C.SET_EDIT_STATE:
+    let editingStates = [];
+
+    for (let index = 0; index < action.storyCount; index++) {
+      editingStates.push(false);
+    }
+
+    return { ...state, editStates: editingStates };
+  case C.UPDATE_EDIT_STATE:
+    let updatingStates = state.editStates;
+
+    for (let index = 0; index < updatingStates.length; index++) {
+      if (state.stories[index].stories_id == action.stories_id) {
+        if (updatingStates[index] == true)
+          updatingStates[index] = false;
+        else
+          updatingStates[index] = true;
+      }
+    }
+
+    return { ...state, editStates: updatingStates };
+  case C.DELETE_STORY:    
+    let removingStates = state.editStates;
+
+    for (let index = 0; index < removingStates.length; index++) {
+      if (state.stories[index].stories_id == action.stories_id)
+        removingStates.splice(index, 1);
+    }
+
+    return { ...state, stories: state.stories.filter(function(x){ return x.stories_id != action.stories_id; }), editStates: removingStates};
   case C.ENVIRONMENT:
     return { ...state, isProduction: action.isProduction };
   default:
