@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { sanitization } from '../helpers/input_sanitization.js';
 import "../../stylesheets/user_stories.scss";
 
 class UserStories extends Component {
@@ -31,15 +32,15 @@ class UserStories extends Component {
 			editBodyText[offset+2].classList.toggle('edit');
 
 			if (this.state.edit) {
-				editTitle.value = title.innerHTML;
-				editBodyText[offset+0].value = bodyText[offset+0].innerHTML;
-				editBodyText[offset+1].value = bodyText[offset+1].innerHTML;
-				editBodyText[offset+2].value = bodyText[offset+2].innerHTML;
+				editTitle.value = sanitization(title.innerHTML);
+				editBodyText[offset+0].value = sanitization(bodyText[offset+0].innerHTML);
+				editBodyText[offset+1].value = sanitization(bodyText[offset+1].innerHTML);
+				editBodyText[offset+2].value = sanitization(bodyText[offset+2].innerHTML);
 			} else {
-				title.innerHTML = editTitle.value;
-				bodyText[offset+0].innerHTML = editBodyText[offset+0].value;
-				bodyText[offset+1].innerHTML = editBodyText[offset+1].value;
-				bodyText[offset+2].innerHTML = editBodyText[offset+2].value;
+				title.innerHTML = sanitization(editTitle.value);
+				bodyText[offset+0].innerHTML = sanitization(editBodyText[offset+0].value);
+				bodyText[offset+1].innerHTML = sanitization(editBodyText[offset+1].value);
+				bodyText[offset+2].innerHTML = sanitization(editBodyText[offset+2].value);
 			}
 		}.bind(this));
 	}
@@ -50,10 +51,10 @@ class UserStories extends Component {
 		if(!this.state.edit) {
 			let editBodyText = document.getElementsByClassName('edit-body-text');
 			let offset = this.props.position*3;
-			let title = document.getElementsByClassName('edit-title')[this.props.position].value;
-			let given_case = editBodyText[offset+0].value;
-			let when_case = editBodyText[offset+1].value;
-			let then_case = editBodyText[offset+2].value;
+			let title = sanitization(document.getElementsByClassName('edit-title')[this.props.position].value);
+			let given_case = sanitization(editBodyText[offset+0].value);
+			let when_case = sanitization(editBodyText[offset+1].value);
+			let then_case = sanitization(editBodyText[offset+2].value);
 
 			this.props.parentEdit(stories_id,title,given_case,when_case,then_case);
 		}
@@ -69,19 +70,19 @@ class UserStories extends Component {
 							<p className="title">{title}</p>
 							<p className="deleting" onClick={() => this.deleteUserStory(stories_id)}>X</p>
 							<p className="editing" onClick={() => this.editUserStory(stories_id)}>Edit</p>
-							<input className="edit-title" type="text"></input>
+							<input className="edit-title" type="text" maxLength = "35"></input>
 						</div>
 						<div className="title-line"></div>
 						<div className="story-body">
 							<p className="body-font">Given</p>
 							<p className="body-text">{given_case}</p>
-							<input className="edit-body-text"></input>
+							<input className="edit-body-text" maxLength = "79"></input>
 							<p className="body-font">When</p>
 							<p className="body-text">{when_case}</p>
-							<input className="edit-body-text"></input>
+							<input className="edit-body-text" maxLength = "79"></input>
 							<p className="body-font">Then</p>
 							<p className="body-text">{then_case}</p>
-							<input className="edit-body-text"></input>
+							<input className="edit-body-text" maxLength = "79"></input>
 						</div>
 					</div>
 				</div>
