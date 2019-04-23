@@ -59,20 +59,6 @@ export function editStory(stories_id,given_case,when_case,then_case) {
   };
 }
 
-export function setEditState(storyCount) {
-  return {
-    type: C.SET_EDIT_STATE,
-    storyCount: storyCount
-  };
-}
-
-export function updateEditState(stories_id) {
-  return {
-    type: C.UPDATE_EDIT_STATE,
-    stories_id: stories_id
-  };
-}
-
 export function deleteStory(stories_id) {
   return {
     type: C.DELETE_STORY,

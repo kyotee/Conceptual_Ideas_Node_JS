@@ -14,30 +14,10 @@ class UserStoriesList extends Component {
 
 		this.addUserStory = this.addUserStory.bind(this);
 		this.deleteUserStory = this.deleteUserStory.bind(this);
+		this.editUserStory = this.editUserStory.bind(this);
 	}
 	componentDidMount() {
-		// let editingStories = this.props.stories.map(({ stories_id }) => "editing-"+stories_id).toString().replace(/,/g, ' ');
 
-		// const editUserStory = (stories_id) => {
-		// 	// use sql to find out next auto increment upon refresh
-
-		// 	// editStories should copy the state to be used ... pass in stories_id
-		// 	// if it works then send back request
-
-		// 	this.props.updateEditState(stories_id);
-		// }
-
-		// // document.getElementById('story-print').addEventListener("click", function() {
-		// // 	deletingStories = this.props.stories.map(({ stories_id }) => "deleting-"+stories_id).toString().replace(/,/g, ' ');
-		// // 	console.log(deletingStories);
-		// // }.bind(this));
-
-
-		// if (editingStories.length > 0) {
-		// 	eventListenerMacro(`${editingStories}`, 'click', function(e) {
-		// 		editUserStory(parseInt(this.id.split('-')[1]));
-		// 	});
-		// }
 	}
 	printDocument() {
 		const input = document.getElementById('story-print');
@@ -66,9 +46,6 @@ class UserStoriesList extends Component {
 			});
 		}
 	}
-	// editUserStory() {
-	// 	console.log("Hit");
-	// }
 	deleteUserStory(stories_id) {
 		if (this.props.storyCount > 0) {
 			this.props.deleteStoryCount(this.props.storyCount-1);
@@ -87,9 +64,18 @@ class UserStoriesList extends Component {
 			});
 		}
 	}
+	editUserStory(stories_id,title,given_case,when_case,then_case) {
+		for(let index=0; index < this.props.stories.length; index++) {
+			if (this.props.stories[index].stories_id == stories_id) {
+				// this.props.editStory(stories_id,title,given_case,when_case,then_case);
+			}
+		}
+	}
 	stories(storyCount,stories) {
 		let currentStories = [];
 
+		console.log(storyCount);
+		console.log(stories);
 		for (let index = 0; index < storyCount; index++) {
 			currentStories.push(
 				<UserStoriesRedux position={index}
@@ -101,6 +87,7 @@ class UserStoriesList extends Component {
 								  when_case={stories[index].when_case}
 								  then_case={stories[index].then_case}
 								  parentDelete={this.deleteUserStory}
+								  parentEdit={this.editUserStory}
 				/>
 			);
 		}
@@ -108,7 +95,7 @@ class UserStoriesList extends Component {
 		return currentStories;
 	}
 	render() {
-		const { storyCount,addStoryCount,deleteStoryCount,stories,addStory,editStory,deleteStory,setEditState,updateEditState,editStates,isProduction } = this.props;
+		const { storyCount,addStoryCount,deleteStoryCount,stories,addStory,editStory,deleteStory,setEditState,editStates,isProduction } = this.props;
 		return (
 			<div>
 				<p id="printing" onClick={this.printDocument}>Print</p>
@@ -130,7 +117,6 @@ UserStoriesList.propTypes = {
   editStory: PropTypes.func.isRequired,
   deleteStory: PropTypes.func.isRequired,
   setEditState: PropTypes.func.isRequired,
-  updateEditState: PropTypes.func.isRequired,
   editStates: PropTypes.array.isRequired,
   isProduction: PropTypes.bool.isRequired
 };

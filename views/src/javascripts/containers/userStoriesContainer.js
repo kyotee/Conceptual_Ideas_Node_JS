@@ -13,7 +13,8 @@ function mapStateToProps(state, ownProps) {
     given_case: ownProps.given_case,
     when_case: ownProps.when_case,
     then_case: ownProps.then_case,
-    parentDelete: ownProps.parentDelete
+    parentDelete: ownProps.parentDelete,
+    parentEdit: ownProps.parentEdit
   }
 }
 

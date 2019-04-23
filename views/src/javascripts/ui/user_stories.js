@@ -46,8 +46,20 @@ class UserStories extends Component {
 	deleteUserStory(stories_id) {
 		this.props.parentDelete(stories_id);
 	}
+	editUserStory(stories_id) {
+		if(!this.state.edit) {
+			let editBodyText = document.getElementsByClassName('edit-body-text');
+			let offset = this.props.position*3;
+			let title = document.getElementsByClassName('edit-title')[this.props.position].value;
+			let given_case = editBodyText[offset+0].value;
+			let when_case = editBodyText[offset+1].value;
+			let then_case = editBodyText[offset+2].value;
+
+			this.props.parentEdit(stories_id,title,given_case,when_case,then_case);
+		}
+	}
 	render() {
-		const { changeEdit,position,stories_id,users_id,title,given_case,when_case,then_case, parentDelete } = this.props;
+		const { changeEdit,position,stories_id,users_id,title,given_case,when_case,then_case,parentDelete,parentEdit } = this.props;
 		return (
 			<div>
 				<div className="user-story">
@@ -56,7 +68,7 @@ class UserStories extends Component {
 							<div className="title-image"></div>
 							<p className="title">{title}</p>
 							<p className="deleting" onClick={() => this.deleteUserStory(stories_id)}>X</p>
-							<p className="editing" id={"editing-"+stories_id}>Edit</p>
+							<p className="editing" onClick={() => this.editUserStory(stories_id)}>Edit</p>
 							<input className="edit-title" type="text"></input>
 						</div>
 						<div className="title-line"></div>
@@ -87,7 +99,8 @@ UserStories.propTypes = {
   given_case: PropTypes.string.isRequired,
   when_case: PropTypes.string.isRequired,
   then_case: PropTypes.string.isRequired,
-  parentDelete: PropTypes.func.isRequired
+  parentDelete: PropTypes.func.isRequired,
+  parentEdit: PropTypes.func.isRequired
 };
 
 export default UserStories;
