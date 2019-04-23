@@ -20,10 +20,10 @@ const queryListTables = {
 	"Create stories table.": `CREATE TABLE stories (
 							    stories_id SERIAL,
 							    users_id BIGINT UNSIGNED NOT NULL,
-							    title varchar(35),
-							    given_case varchar(79),
-							    when_case varchar(79),
-							    then_case varchar(79),
+							    title varchar(20),
+							    given_case varchar(49),
+							    when_case varchar(49),
+							    then_case varchar(49),
 							    PRIMARY KEY (stories_id),
 							    FOREIGN KEY (users_id) REFERENCES users(users_id) ON DELETE CASCADE
 							)`

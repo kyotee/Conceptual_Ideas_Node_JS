@@ -64,25 +64,25 @@ class UserStories extends Component {
 		return (
 			<div>
 				<div className="user-story">
-					<div className="user-story-container">
+					<div className="user-story-container no-word-overflow">
 						<div className="title-container">
 							<div className="title-image"></div>
 							<p className="title">{title}</p>
 							<p className="deleting" onClick={() => this.deleteUserStory(stories_id)}>X</p>
 							<p className="editing" onClick={() => this.editUserStory(stories_id)}>Edit</p>
-							<input className="edit-title" type="text" maxLength = "35"></input>
+							<input className="edit-title" type="text" maxLength = "20"></input>
 						</div>
 						<div className="title-line"></div>
 						<div className="story-body">
 							<p className="body-font">Given</p>
 							<p className="body-text">{given_case}</p>
-							<input className="edit-body-text" maxLength = "79"></input>
+							<input className="edit-body-text" maxLength = "49"></input>
 							<p className="body-font">When</p>
 							<p className="body-text">{when_case}</p>
-							<input className="edit-body-text" maxLength = "79"></input>
+							<input className="edit-body-text" maxLength = "49"></input>
 							<p className="body-font">Then</p>
 							<p className="body-text">{then_case}</p>
-							<input className="edit-body-text" maxLength = "79"></input>
+							<input className="edit-body-text" maxLength = "49"></input>
 						</div>
 					</div>
 				</div>

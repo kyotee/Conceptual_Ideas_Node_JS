@@ -16,9 +16,6 @@ class UserStoriesList extends Component {
 		this.deleteUserStory = this.deleteUserStory.bind(this);
 		this.editUserStory = this.editUserStory.bind(this);
 	}
-	componentDidMount() {
-
-	}
 	printDocument() {
 		const input = document.getElementById('story-print');
 
@@ -26,7 +23,11 @@ class UserStoriesList extends Component {
 			.then((canvas) => {
 			    const imgData = canvas.toDataURL('image/png');
 			    const pdf = new jsPDF();
-			    pdf.addImage(imgData, 'JPEG', 15, 15, 180, 275);  // 180x200 mm @ (10,10)mm
+
+			    let width = pdf.internal.pageSize.getWidth()-75;
+				let height = pdf.internal.pageSize.getHeight()-75;
+
+			    pdf.addImage(imgData, 'JPEG', 35, 35, width, height);  // 180x200 mm @ (10,10)mm
 			    pdf.save("user_stories.pdf");
 			});
 	}

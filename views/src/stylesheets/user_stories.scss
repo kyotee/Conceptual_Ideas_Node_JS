@@ -34,7 +34,7 @@
 	background-image: url("../images/idea.svg");
 	width: 1.5em;
 	height: 1.5em;
-	margin-top: 0.75em;
+	margin-top: 0.95em;
 	display: inline-block
 }
 
@@ -59,7 +59,7 @@
 	font-size: 150%;
 	margin-top: 0;
 	margin-left: 0.5em;
-	margin-bottom: 0.6em;
+	margin-bottom: 0.75em;
 	color: #1e90ff
 }
 
@@ -84,12 +84,33 @@
 	display: inline-block	
 }
 
-.editing, #printing, #add-story, #delete-story, .deleting {
+#printing, #add-story, #delete-story {
 	width: 5em;
 	height: 2em;
 	background-color: #008080;
 	cursor: pointer;
 	color: white
+}
+
+.editing, .deleting {
+	cursor: pointer;
+	border-radius: 0.2em;
+	text-align: center;
+	color: white
+}
+
+.editing {
+	padding: 0.4em 0.7em 0.4em 0.7em;
+	background-color: #CCCC00
+}
+
+.deleting {
+	padding: 0.4em 0.7em 0.4em 0.7em;
+	background-color: #FF6666
+}
+
+.no-word-overflow {
+	word-wrap: break-word	
 }
 
 .editing, .deleting {
