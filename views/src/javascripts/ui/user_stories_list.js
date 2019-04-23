@@ -26,7 +26,7 @@ class UserStoriesList extends Component {
 			.then((canvas) => {
 			    const imgData = canvas.toDataURL('image/png');
 			    const pdf = new jsPDF();
-			    pdf.addImage(imgData, 'JPEG', 10, 10, 180, 200);  // 180x200 mm @ (10,10)mm
+			    pdf.addImage(imgData, 'JPEG', 15, 15, 180, 275);  // 180x200 mm @ (10,10)mm
 			    pdf.save("user_stories.pdf");
 			});
 	}
