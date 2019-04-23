@@ -1,4 +1,19 @@
 /* user_stories.scss media queries */
+.title {
+	@media screen and (max-width: 475px){
+		width: 100%;
+		text-align: center
+	}
+	@media screen and (min-width: 476px){
+		margin-left: 0.5em
+	}
+}
+
+.title-image {
+	@media screen and (max-width: 475px){
+		margin-left: 46%
+	}
+}
 
 /* user_stories.scss */
 
@@ -22,7 +37,8 @@
 	background-color: white;
 	margin: auto;
 	height: 19.9em;
-	border-radius: 0.75em
+	border-radius: 0.75em;
+	overflow: auto
 }
 
 .title-container {
@@ -47,7 +63,8 @@
 }
 
 .title {
-	display: inline-block
+	display: inline-block;
+	font-weight: bold
 }
 
 .edit-title {
@@ -58,14 +75,14 @@
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 150%;
 	margin-top: 0;
-	margin-left: 0.5em;
 	margin-bottom: 0.75em;
 	color: #1e90ff
 }
 
 .body-font {
 	margin-bottom: 0;
-	color: #72bcd4	
+	color: #72bcd4;
+	font-weight: bold
 }
 
 .body-text, .edit-body-text {
@@ -81,7 +98,22 @@
 }
 
 .edit-title.edit, .edit-body-text.edit {
-	display: inline-block	
+	padding-left: 0.3em;
+	display: inline-block;
+	border: none;
+	border: solid 0.05em;
+	border-radius: 0.15em
+}
+
+.edit-title.edit {
+	width: 80%;
+	max-width: 10em
+}
+
+.edit-body-text.edit {
+	width: 78%;
+	max-width: 24em;
+	height: 1.5em
 }
 
 #printing, #add-story, #delete-story {
@@ -96,7 +128,10 @@
 	cursor: pointer;
 	border-radius: 0.2em;
 	text-align: center;
-	color: white
+	color: white;
+	-webkit-user-select: none;     
+	-moz-user-select: none;
+	-ms-user-select: none
 }
 
 .editing {
