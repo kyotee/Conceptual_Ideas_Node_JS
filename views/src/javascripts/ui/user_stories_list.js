@@ -67,15 +67,25 @@ class UserStoriesList extends Component {
 	editUserStory(stories_id,title,given_case,when_case,then_case) {
 		for(let index=0; index < this.props.stories.length; index++) {
 			if (this.props.stories[index].stories_id == stories_id) {
-				// this.props.editStory(stories_id,title,given_case,when_case,then_case);
+				axios.put(`/api/edit_story`, { 
+					stories_id: stories_id,
+					title: title,
+					given_case: given_case,
+					when_case: when_case,
+					then_case: then_case
+				})
+				.then(res => {
+					console.log("Story edit successful.");
+				})
+				.catch(error => {
+					console.log("Story edit unsuccessful.");
+				});
 			}
 		}
 	}
 	stories(storyCount,stories) {
 		let currentStories = [];
 
-		console.log(storyCount);
-		console.log(stories);
 		for (let index = 0; index < storyCount; index++) {
 			currentStories.push(
 				<UserStoriesRedux position={index}
@@ -95,7 +105,7 @@ class UserStoriesList extends Component {
 		return currentStories;
 	}
 	render() {
-		const { storyCount,addStoryCount,deleteStoryCount,stories,addStory,editStory,deleteStory,setEditState,editStates,isProduction } = this.props;
+		const { storyCount,addStoryCount,deleteStoryCount,stories,addStory,deleteStory,isProduction } = this.props;
 		return (
 			<div>
 				<p id="printing" onClick={this.printDocument}>Print</p>
@@ -114,10 +124,7 @@ UserStoriesList.propTypes = {
   deleteStoryCount: PropTypes.func.isRequired,
   stories: PropTypes.array.isRequired,
   addStory: PropTypes.func.isRequired,
-  editStory: PropTypes.func.isRequired,
   deleteStory: PropTypes.func.isRequired,
-  setEditState: PropTypes.func.isRequired,
-  editStates: PropTypes.array.isRequired,
   isProduction: PropTypes.bool.isRequired
 };
 

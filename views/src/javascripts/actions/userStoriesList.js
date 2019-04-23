@@ -49,16 +49,6 @@ export function addStory(user_id) {
   };
 }
 
-export function editStory(stories_id,given_case,when_case,then_case) {
-  return {
-    type: C.EDIT_STORY,
-    stories_id: stories_id,
-    given_case: given_case,
-    when_case: when_case,
-    then_case: then_case
-  };
-}
-
 export function deleteStory(stories_id) {
   return {
     type: C.DELETE_STORY,

@@ -54,6 +54,7 @@ app.get("/api/environment", environment.environment);
 app.get("/api/stories", stories.show_stories);
 app.post("/api/create_story", stories.create_stories);
 app.delete("/api/delete_story", stories.destroy_stories);
+app.put("/api/edit_story", stories.update_stories);
 app.get("/api/next_stories_index", stories.next_stories_index);
 
 // the "catchall" handler: for any request that doesn't

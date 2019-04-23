@@ -36,6 +36,18 @@ exports.destroy_stories_model = function(stories_id,callback) {
 	});
 }
 
+exports.update_stories_model = function(stories_id,title,given_case,when_case,then_case,callback) {
+	let query = `UPDATE stories SET title = '${title}', given_case = '${given_case}', when_case = '${when_case}', then_case = '${then_case}' WHERE stories_id = ${stories_id}`;
+
+	con.query(query, (err,rows) => {
+		if (err) {
+			console.log("Database query error.");
+		}
+		
+		return callback(rows);
+	});
+}
+
 exports.next_stories_index_model = function(callback) {
 	let query = `SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name = 'stories' AND table_schema = DATABASE( )`; 
 
