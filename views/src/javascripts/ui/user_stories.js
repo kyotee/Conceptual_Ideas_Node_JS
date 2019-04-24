@@ -59,6 +59,9 @@ class UserStories extends Component {
 			this.props.parentEdit(stories_id,title,given_case,when_case,then_case);
 		}
 	}
+	status() {
+		return this.state.edit ? "Done" : "Edit";
+	}
 	render() {
 		const { changeEdit,position,stories_id,users_id,title,given_case,when_case,then_case,parentDelete,parentEdit } = this.props;
 		return (
@@ -69,7 +72,7 @@ class UserStories extends Component {
 							<div className="title-image"></div>
 							<p className="title">{title}</p>
 							<p className="deleting" onClick={() => this.deleteUserStory(stories_id)}>X</p>
-							<p className="editing" onClick={() => this.editUserStory(stories_id)}>Edit</p>
+							<p className="editing" onClick={() => this.editUserStory(stories_id)}>{this.status()}</p>
 							<input className="edit-title" type="text" maxLength = "20"></input>
 						</div>
 						<div className="title-line"></div>

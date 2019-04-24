@@ -109,8 +109,10 @@ class UserStoriesList extends Component {
 		const { storyCount,addStoryCount,deleteStoryCount,stories,addStory,deleteStory,isProduction } = this.props;
 		return (
 			<div>
-				<p id="printing" onClick={this.printDocument}>Print</p>
-				<p id="add-story" onClick={this.addUserStory}>Add Story</p>
+				<div id="function-buttons">
+					<p id="add-story" onClick={this.addUserStory}>Add Story</p>
+					<p id="printing" onClick={this.printDocument}>Print</p>
+				</div>
 				<div id="story-print">
 					{this.stories(storyCount,stories)}
 				</div>
