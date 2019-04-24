@@ -33,7 +33,7 @@ export default function userStoriesList(state = initalState, action) {
     state.isProduction === true ? nextHighestIndex += 10 : nextHighestIndex += 1;
 
     return { ...state, stories: state.stories.concat(newStory), databaseOffset: nextHighestIndex};
-  case C.DELETE_STORY:    
+  case C.DELETE_STORY: 
     return { ...state, stories: state.stories.filter(function(x){ return x.stories_id != action.stories_id; })};
   case C.DATABASE_INCREMENT:
     return { ...state, databaseOffset: action.databaseOffset[0].AUTO_INCREMENT };

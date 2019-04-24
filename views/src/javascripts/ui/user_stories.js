@@ -18,6 +18,7 @@ class UserStories extends Component {
 		let editBodyText = document.getElementsByClassName('edit-body-text');		
 		let edit = document.getElementsByClassName('editing')[this.props.position];
 		let offset = this.props.position*3;
+		let deleteIcon = document.getElementsByClassName('deleting')[this.props.position];
 
 		edit.addEventListener("click", function() {
 			this.setState({ edit: !this.state.edit })
@@ -36,16 +37,19 @@ class UserStories extends Component {
 				editBodyText[offset+0].value = sanitization(bodyText[offset+0].innerHTML);
 				editBodyText[offset+1].value = sanitization(bodyText[offset+1].innerHTML);
 				editBodyText[offset+2].value = sanitization(bodyText[offset+2].innerHTML);
+				deleteIcon.style.backgroundColor = 'grey';
 			} else {
 				title.innerHTML = sanitization(editTitle.value);
 				bodyText[offset+0].innerHTML = sanitization(editBodyText[offset+0].value);
 				bodyText[offset+1].innerHTML = sanitization(editBodyText[offset+1].value);
 				bodyText[offset+2].innerHTML = sanitization(editBodyText[offset+2].value);
+				deleteIcon.style.backgroundColor = '#FF6666';
 			}
 		}.bind(this));
 	}
 	deleteUserStory(stories_id) {
-		this.props.parentDelete(stories_id);
+		if (this.state.edit == false)
+			this.props.parentDelete(stories_id);
 	}
 	editUserStory(stories_id) {
 		if(!this.state.edit) {
