@@ -34,7 +34,23 @@ export default function userStoriesList(state = initalState, action) {
 
     return { ...state, stories: state.stories.concat(newStory), databaseOffset: nextHighestIndex};
   case C.DELETE_STORY: 
-    return { ...state, stories: state.stories.filter(function(x){ return x.stories_id != action.stories_id; })};
+    let updatedStories = state.stories;
+
+    const deletedStory = {
+            stories_id: 0,
+            users_id: 0,
+            title: "",
+            given_case: "",
+            when_case: "",
+            then_case: ""
+          };
+
+    for (let index = 0; index < updatedStories.length; index++) {
+      if (updatedStories[index].stories_id == action.stories_id)
+        updatedStories[index] = deletedStory;
+    }
+
+    return { ...state, stories: updatedStories };
   case C.DATABASE_INCREMENT:
     return { ...state, databaseOffset: action.databaseOffset[0].AUTO_INCREMENT };
   case C.ENVIRONMENT:

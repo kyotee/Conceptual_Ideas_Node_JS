@@ -48,8 +48,12 @@ class UserStories extends Component {
 		}.bind(this));
 	}
 	deleteUserStory(stories_id) {
-		if (this.state.edit == false)
+		if (this.state.edit == false) {
+			let userStories = document.getElementsByClassName('user-story')[this.props.position];
+
+			userStories.style.display = 'none';
 			this.props.parentDelete(stories_id);
+		}
 	}
 	editUserStory(stories_id) {
 		if(!this.state.edit) {

@@ -84,10 +84,10 @@ class UserStoriesList extends Component {
 			}
 		}
 	}
-	stories(storyCount,stories) {
+	stories(stories) {
 		let currentStories = [];
 
-		for (let index = 0; index < storyCount; index++) {
+		for (let index = 0; index < stories.length; index++) {
 			currentStories.push(
 				<UserStoriesRedux position={index}
 								  key={index} 
@@ -114,7 +114,7 @@ class UserStoriesList extends Component {
 					<p id="printing" onClick={this.printDocument}>Print</p>
 				</div>
 				<div id="story-print">
-					{this.stories(storyCount,stories)}
+					{this.stories(stories)}
 				</div>
 			</div>
 		);
