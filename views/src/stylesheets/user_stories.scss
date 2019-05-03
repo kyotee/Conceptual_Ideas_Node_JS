@@ -103,24 +103,20 @@ $story-fonts: Helvetica, Arial, sans-serif;
 	display: none
 }
 
-.title.edit, .body-text.edit {
-	display: none
-}
-
-.edit-title.edit, .edit-body-text.edit {
+.edit-title, .edit-body-text {
 	padding-left: 0.3em;
-	display: inline-block;
+	display: none;
 	border: none;
 	border: solid 0.05em;
 	border-radius: 0.15em
 }
 
-.edit-title.edit {
+.edit-title {
 	width: 80%;
 	max-width: 10em
 }
 
-.edit-body-text.edit {
+.edit-body-text {
 	width: 78%;
 	max-width: 24em;
 	height: 1.5em
