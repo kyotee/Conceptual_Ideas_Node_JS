@@ -4,11 +4,15 @@ import { sanitization } from '../helpers/input_sanitization.js';
 import "../../stylesheets/user_stories.scss";
 
 class UserStories extends Component {
-	state = { edit: false }
+	state = { 
+		edit: false,
+		deleted: false
+	}
 
 	constructor(props) {
 		super(props);
 
+		this.editUserStory = this.editUserStory.bind(this);
 		this.deleteUserStory = this.deleteUserStory.bind(this);
 	}
 	componentDidMount() {
@@ -21,7 +25,7 @@ class UserStories extends Component {
 		let deleteIcon = document.getElementsByClassName('deleting')[this.props.position];
 
 		edit.addEventListener("click", function() {
-			this.setState({ edit: !this.state.edit })
+			this.setState({ edit: !this.state.edit });
 
 			title.classList.toggle('edit');
 			editTitle.classList.toggle('edit');
@@ -47,14 +51,6 @@ class UserStories extends Component {
 			}
 		}.bind(this));
 	}
-	deleteUserStory(stories_id) {
-		if (this.state.edit == false) {
-			let userStories = document.getElementsByClassName('user-story')[this.props.position];
-
-			userStories.style.display = 'none';
-			this.props.parentDelete(stories_id);
-		}
-	}
 	editUserStory(stories_id) {
 		if(!this.state.edit) {
 			let editBodyText = document.getElementsByClassName('edit-body-text');
@@ -67,14 +63,28 @@ class UserStories extends Component {
 			this.props.parentEdit(stories_id,title,given_case,when_case,then_case);
 		}
 	}
+	deleteUserStory(stories_id) {
+		if (this.state.edit === false) {
+			this.setState({ deleted: true });
+			this.props.parentDelete(stories_id);
+		}
+	}
 	status() {
 		return this.state.edit ? "Done" : "Edit";
 	}
 	render() {
+		const { deleted } = this.state;
 		const { changeEdit,position,stories_id,users_id,title,given_case,when_case,then_case,parentDelete,parentEdit } = this.props;
+		let disappearStory;
+
+		if (deleted) {
+			disappearStory = {
+				display: "none"
+			};
+		}
 		return (
 			<div>
-				<div className="user-story">
+				<div style={disappearStory} className="user-story">
 					<div className="user-story-container no-word-overflow">
 						<div className="title-container">
 							<div className="title-image"></div>

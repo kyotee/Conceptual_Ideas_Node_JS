@@ -66,7 +66,7 @@ class UserStoriesList extends Component {
 		}
 	}
 	editUserStory(stories_id,title,given_case,when_case,then_case) {
-		for (let index=0; index < this.props.stories.length; index++) {
+		for (let index = 0; index < this.props.stories.length; index++) {
 			if (this.props.stories[index].stories_id == stories_id) {
 				axios.put(`/api/edit_story`, { 
 					stories_id: stories_id,
