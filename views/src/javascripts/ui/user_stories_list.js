@@ -17,24 +17,24 @@ class UserStoriesList extends Component {
 		this.editUserStory = this.editUserStory.bind(this);
 	}
 	printDocument() {
-		const input = document.getElementById('story-print');
+		let input = document.getElementById('story-print');
 
 		html2canvas(input)
 			.then((canvas) => {
-			    const imgData = canvas.toDataURL('image/png');
-			    const pdf = new jsPDF();
+			    let imgData = canvas.toDataURL('image/png');
+			    let pdf = new jsPDF();
 
-			    let width = pdf.internal.pageSize.getWidth()-75;
-				let height = pdf.internal.pageSize.getHeight()-75;
+			    let width = pdf.internal.pageSize.getWidth()-65;
+				let height = pdf.internal.pageSize.getHeight()-30;
 
-			    pdf.addImage(imgData, 'JPEG', 35, 35, width, height);  // 180x200 mm @ (10,10)mm
+			    pdf.addImage(imgData, 'JPEG', 29, 15, width, height);  // 180x200 mm @ (10,10)mm
 			    pdf.save("user_stories.pdf");
 			});
 	}
 	addUserStory() {
 		if (this.props.storyCount < 5) {
 			this.props.addStoryCount(this.props.storyCount+1);
-			this.props.addStory(1);    // '1' currently represents admin
+			this.props.addStory(1);  // '1' currently represents admin
 
 			axios.post(`/api/create_story`, { 
 				user_id: 1
@@ -66,7 +66,7 @@ class UserStoriesList extends Component {
 		}
 	}
 	editUserStory(stories_id,title,given_case,when_case,then_case) {
-		for(let index=0; index < this.props.stories.length; index++) {
+		for (let index=0; index < this.props.stories.length; index++) {
 			if (this.props.stories[index].stories_id == stories_id) {
 				axios.put(`/api/edit_story`, { 
 					stories_id: stories_id,
@@ -106,7 +106,7 @@ class UserStoriesList extends Component {
 		return currentStories;
 	}
 	render() {
-		const { storyCount,addStoryCount,deleteStoryCount,stories,addStory,deleteStory,isProduction } = this.props;
+		const { stories } = this.props;
 		return (
 			<div>
 				<div id="function-buttons">
