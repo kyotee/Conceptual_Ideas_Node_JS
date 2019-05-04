@@ -128,7 +128,8 @@ UserStoriesList.propTypes = {
   stories: PropTypes.array.isRequired,
   addStory: PropTypes.func.isRequired,
   deleteStory: PropTypes.func.isRequired,
-  isProduction: PropTypes.bool.isRequired
+  isProduction: PropTypes.bool.isRequired,
+  changeEdit: PropTypes.func.isRequired
 };
 
 export default UserStoriesList;
