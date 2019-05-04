@@ -61,6 +61,7 @@ class UserStories extends Component {
 		const { stories_id,users_id } = this.props;
 		let editStory;
 		let editStoryHide;
+		let deleteDisabled;
 		let disappearStory;
 
 		if (!NotEdit) {
@@ -70,6 +71,10 @@ class UserStories extends Component {
 
 			editStoryHide = {
 				display: "none"				
+			};
+
+			deleteDisabled = {
+				backgroundColor: "grey"
 			};
 		}
 
@@ -85,7 +90,7 @@ class UserStories extends Component {
 						<div className="title-container">
 							<div className="title-image"></div>
 							<p className="title" style={editStoryHide}>{setTitle}</p>
-							<p className="deleting" onClick={() => this.deleteUserStory(stories_id)}>X</p>
+							<p className="deleting" style={deleteDisabled} onClick={() => this.deleteUserStory(stories_id)}>X</p>
 							<p className="editing" onClick={() => this.editUserStory(stories_id,setTitle,setGiven,setWhen,setThen)}>{this.status()}</p>
 							<input className="edit-title" style={editStory} value={setTitle} name="title" onChange={this.updateInformation} type="text" maxLength="20"></input>
 						</div>

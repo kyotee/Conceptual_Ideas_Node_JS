@@ -121,12 +121,19 @@ class UserStoriesList extends Component {
 		return currentStories;
 	}
 	render() {
-		const { stories } = this.props;
+		const { stories,storyCount } = this.props;
+		let noPrinting;
+
+		if (storyCount < 1) {
+			noPrinting = {
+				backgroundColor: "grey"
+			};
+		}
 		return (
 			<div>
 				<div id="function-buttons">
 					<p id="add-story" onClick={this.addUserStory}>Add Story</p>
-					<p id="printing" onClick={this.printDocument}>Print</p>
+					<p id="printing" style={noPrinting} onClick={this.printDocument}>Print</p>
 				</div>
 				<div id="story-print">
 					{this.stories(stories)}
