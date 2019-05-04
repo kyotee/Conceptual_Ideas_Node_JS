@@ -12,24 +12,40 @@ class UserStoriesList extends Component {
 	constructor(props) {
 		super(props);
 
+		this.printDocument = this.printDocument.bind(this);
 		this.addUserStory = this.addUserStory.bind(this);
 		this.deleteUserStory = this.deleteUserStory.bind(this);
 		this.editUserStory = this.editUserStory.bind(this);
 	}
 	printDocument() {
-		let input = document.getElementById('story-print');
+		let counter = this.props.storyCount;
 
-		html2canvas(input)
-			.then((canvas) => {
-			    let imgData = canvas.toDataURL('image/png');
-			    let pdf = new jsPDF();
+		if (counter >= 1) {
+			let input = document.getElementById('story-print');
 
-			    let width = pdf.internal.pageSize.getWidth()-65;
-				let height = pdf.internal.pageSize.getHeight()-30;
+			html2canvas(input)
+				.then((canvas) => {
+					let pdfResize;
+				    let imgData = canvas.toDataURL('image/png');
+				    let pdf = new jsPDF();
 
-			    pdf.addImage(imgData, 'JPEG', 29, 15, width, height);  // 180x200 mm @ (10,10)mm
-			    pdf.save("user_stories.pdf");
-			});
+				    if (counter >= 4) {
+				    	pdfResize = 0.9;
+				    } else if (counter == 3) {
+				    	pdfResize = 0.6;			    	
+				    } else if (counter == 2) {
+				    	pdfResize = 0.3;			    	
+				    } else {
+				    	pdfResize = 0.2;			    	
+				    }
+
+				    let width = pdf.internal.pageSize.getWidth()*0.7;
+					let height = pdf.internal.pageSize.getHeight()*pdfResize;
+
+				    pdf.addImage(imgData, 'JPEG', 29, 15, width, height);  // 180x200 mm @ (10,10)mm
+				    pdf.save("user_stories.pdf");
+				});
+		}
 	}
 	addUserStory() {
 		if (this.props.storyCount < 5) {
