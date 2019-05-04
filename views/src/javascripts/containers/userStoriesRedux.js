@@ -13,7 +13,6 @@ class UserStoriesRedux extends Component {
     return (
       <Provider store={store}>
         <UserStoriesContainer
-          position={this.props.position} 
 				  stories_id={this.props.stories_id}
 				  users_id={this.props.users_id}
 				  title={this.props.title}

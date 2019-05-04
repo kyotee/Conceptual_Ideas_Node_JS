@@ -57,8 +57,8 @@ class UserStories extends Component {
 		return this.state.NotEdit ? "Edit" : "Done";
 	}
 	render() {
-		const { NotEdit,deleted,setTitle,setGiven,setWhen,setThen,changeTitle,changeGiven,changeWhen,changeThen } = this.state;
-		const { changeEdit,position,stories_id,users_id,parentDelete,parentEdit } = this.props;
+		const { NotEdit,deleted,setTitle,setGiven,setWhen,setThen } = this.state;
+		const { stories_id,users_id } = this.props;
 		let editStory;
 		let editStoryHide;
 		let disappearStory;
@@ -109,8 +109,6 @@ class UserStories extends Component {
 }
 
 UserStories.propTypes = {
-  changeEdit: PropTypes.func.isRequired,
-  position: PropTypes.number.isRequired,
   stories_id: PropTypes.number.isRequired,
   users_id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,

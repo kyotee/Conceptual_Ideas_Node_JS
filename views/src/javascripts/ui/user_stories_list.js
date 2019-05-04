@@ -89,8 +89,7 @@ class UserStoriesList extends Component {
 
 		for (let index = 0; index < stories.length; index++) {
 			currentStories.push(
-				<UserStoriesRedux position={index}
-								  key={index} 
+				<UserStoriesRedux key={index} 
 								  stories_id={stories[index].stories_id}
 								  users_id={stories[index].users_id}
 								  title={stories[index].title}

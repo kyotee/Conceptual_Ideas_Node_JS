@@ -124,6 +124,7 @@ $story-fonts: Helvetica, Arial, sans-serif;
 
 #printing, #add-story {
 	font-family: $story-fonts;
+	font-weight: bold;
 	display: inline-block;
 	background-color: #008080;
 	cursor: pointer;
@@ -132,7 +133,8 @@ $story-fonts: Helvetica, Arial, sans-serif;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	border-radius: 0.15em;
-	padding: 0.4em 0.7em 0.4em 0.7em
+	padding: 0.7em 1em 0.7em 1em;
+	margin: 0 0 2em 2%
 }
 
 #printing {
