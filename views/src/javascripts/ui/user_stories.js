@@ -8,7 +8,7 @@ class UserStories extends Component {
 		super(props);
 
 		this.state = {	
-			NotEdit: true,
+			notEdit: true,
 			deleted: false,
 			setTitle: '',
 			setGiven: '',
@@ -27,14 +27,14 @@ class UserStories extends Component {
 		this.setState({ setThen: this.props.then_case });
 	}
 	editUserStory(stories_id,setTitle,setGiven,setWhen,setThen) {
-		if (!this.state.NotEdit) {
+		if (!this.state.notEdit) {
 			this.props.parentEdit(stories_id,setTitle,setGiven,setWhen,setThen);
 		}
 
-		this.setState({ NotEdit: !this.state.NotEdit });
+		this.setState({ notEdit: !this.state.notEdit });
 	}
 	deleteUserStory(stories_id) {
-		if (this.state.NotEdit === true) {
+		if (this.state.notEdit === true) {
 			this.setState({ deleted: true });
 			this.props.parentDelete(stories_id);
 		}
@@ -54,17 +54,17 @@ class UserStories extends Component {
 		}
 	}
 	status() {
-		return this.state.NotEdit ? "Edit" : "Done";
+		return this.state.notEdit ? "Edit" : "Done";
 	}
 	render() {
-		const { NotEdit,deleted,setTitle,setGiven,setWhen,setThen } = this.state;
+		const { notEdit,deleted,setTitle,setGiven,setWhen,setThen } = this.state;
 		const { stories_id,users_id } = this.props;
 		let editStory;
 		let editStoryHide;
 		let deleteDisabled;
 		let disappearStory;
 
-		if (!NotEdit) {
+		if (!notEdit) {
 			editStory = {
 				display: "inline-block"
 			};
