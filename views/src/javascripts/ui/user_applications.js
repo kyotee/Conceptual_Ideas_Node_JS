@@ -49,11 +49,11 @@ class UserApplications extends Component {
 				<div className="header-apps">
 					<p>Ruby on Rails App</p>
 				</div>
-				<div className="image-apps" style={{ backgroundColor: "#CCFFE5" }}>
+				<div className="image-apps" style={{ backgroundColor: "#FFEFDB" }}>
 					 <div className="idea-icon-apps"></div>​
 				</div>
 				<div className="describe-apps">
-					<p>{apps.app[5].description}</p>
+					<p>{apps.app[2].description}</p>
 				</div>
 				<div className="button-apps">
 					<div className="button-apps-container" id={"box-"+6}>
