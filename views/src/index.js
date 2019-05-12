@@ -7,7 +7,7 @@ import NavigationBar from './javascripts/ui/navigation_bar.js';
 import UserApplications from './javascripts/ui/user_applications.js';
 import About from './javascripts/ui/about.js';
 import Contact from './javascripts/ui/contact.js';
-import SignupSigninForm from './javascripts/ui/signup_signin_form.js';
+import SignupSigninFormRedux from './javascripts/containers/signupSigninFormRedux.js';
 import UserStoriesListRedux from './javascripts/containers/userStoriesListRedux.js';
 
 ReactDOM.render(<NavigationBar/>, document.getElementById('nav'));
@@ -21,11 +21,11 @@ const routing = (
         <Route path="/contact" component={Contact} />
         <Route
           path='/signup'
-          render={(props) => <SignupSigninForm {...props} formType={"Sign up"} />}
+          render={(props) => <SignupSigninFormRedux {...props} formType={"Sign up"} />}
         />
         <Route
           path='/login'
-          render={(props) => <SignupSigninForm {...props} formType={"Sign in"} />}
+          render={(props) => <SignupSigninFormRedux {...props} formType={"Sign in"} />}
         />
         <Route path="/user_stories" component={UserStoriesListRedux} />
         <Route component={Notfound} />
