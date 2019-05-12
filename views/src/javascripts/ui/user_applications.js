@@ -4,21 +4,6 @@ import apps from '../json_data/applications.js';
 import "../../stylesheets/user_applications.scss";
 
 class UserApplications extends Component {
-	componentDidMount() {
-		for (let index = 1; index < Object.keys(apps.app).length; index++) {
-			let detectButton = document.getElementById(`box-${index}`);
-
-			detectButton.addEventListener('mouseover', function() {
-				detectButton.style.transition = "transform .0.5s";
-				detectButton.style.transform = "scale(1.1)";
-			});
-
-			detectButton.addEventListener('mouseout', function() {
-				detectButton.style.transition = "transform .0.5s";
-				detectButton.style.transform = "scale(1)";
-			});
-		}
-	}
 	applicationBoxes() {
 		let boxes = [];
 
@@ -35,7 +20,7 @@ class UserApplications extends Component {
 						<p>{apps.app[index].description}</p>
 					</div>
 					<div className="button-apps">
-						<div className="button-apps-container" id={"box-"+index}>
+						<div className="button-apps-container">
 							<ActionButton text={"See Feature"} />
 						</div>
 					</div>
@@ -43,9 +28,9 @@ class UserApplications extends Component {
 			);
 		}
 
-		// push (separate) Ruby on Rails project
+		// push new (separate) Ruby on Rails project
 		boxes.push(
-			<div className="boxes" onClick={() => { window.open('https://conceptual-ideas.herokuapp.com/', '_blank') }} key={6}>
+			<div className="boxes" onClick={() => { window.open('https://conceptual-ideas.herokuapp.com/', '_blank') }} key={3}>
 				<div className="header-apps">
 					<p>Ruby on Rails App</p>
 				</div>
@@ -56,7 +41,7 @@ class UserApplications extends Component {
 					<p>{apps.app[2].description}</p>
 				</div>
 				<div className="button-apps">
-					<div className="button-apps-container" id={"box-"+6}>
+					<div className="button-apps-container">
 						<ActionButton text={"See Feature"} />
 					</div>
 				</div>
