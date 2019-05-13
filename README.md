@@ -20,13 +20,41 @@ https://conceptual-ideas-node-js.herokuapp.com/
 
 Application currently utilizes the following methods and technologies:
 
-## <a name="APIs"></a>APIs
+- `Node.js with Express`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;web application frameworks
+- `Jenkins`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continuous integration service that builds and executes Mocha/Nightwatch tests (every git push)
+- `Heroku`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;host server for application (must pass their build before every deployment)
+- `SSL for Heroku (Deployment) Server`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;encrypt packets of information
+- `Mocha; Nightwatch`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quality assurance
+- `Selenium (browser based); Headless Chrome`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;web testing drivers
+- `Media Queries`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;responsive web design (ex mobile and tablet resolution support)
+- `React; ES6; Redux; Webpack; Yarn`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript libraries with associated syntax and managers
+- `Single-Page Application (SPA) with React Router`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;performance improvements situated with loading
+- `MySQL`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;database management
 
-In addition, application currently utilizes the following APIs:
+## <a name="APIs"></a>APIs
 
 ## <a name="Format"></a>Format
 
 Each feature implemented into this application is documented:
+https://drive.google.com/open?id=1AULF6yWbkCUC26k8TUl_uoV-MuseN3TO
+
+Here are the current features:
+
+- `0 - Framework Setup and Integration`<br>
+- `1 - User Stories`<br>
+
+Here is the Kanban board to see progress on incompleted features, miscellaneous tasks, and bugs:
+https://trello.com/b/cyxQAQQh/conceptual-ideas-progress
 
 ## <a name="Accessibility"></a>Accessibility
 
