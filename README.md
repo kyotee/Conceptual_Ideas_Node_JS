@@ -24,6 +24,8 @@ Application currently utilizes the following methods and technologies:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;web application frameworks
 - `Jenkins`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continuous integration service that builds and executes Mocha/Nightwatch tests (every git push)
+- `Docker`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;virtualization software which makes containers easier to use
 - `Heroku`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;host server for application (must pass their build before every deployment)
 - `SSL for Heroku (Deployment) Server`<br>
