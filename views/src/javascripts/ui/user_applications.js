@@ -38,7 +38,7 @@ class UserApplications extends Component {
 					 <div className="idea-icon-apps"></div>​
 				</div>
 				<div className="describe-apps">
-					<p>{apps.app[2].description}</p>
+					<p>Independent features created with another application consisting of different technologies.</p>
 				</div>
 				<div className="button-apps">
 					<div className="button-apps-container">

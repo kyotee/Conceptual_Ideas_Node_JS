@@ -50,7 +50,7 @@ $default-fonts: Helvetica, Arial, sans-serif;
     box-shadow: 0em 0em 2em 0em rgba(253, 227, 167, 1)
 }
 
-.header-apps, .image-apps, .describe-apps, .button-apps, .button-apps-container {
+.header-apps, .image-apps, .button-apps, .button-apps-container {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
@@ -86,7 +86,15 @@ $default-fonts: Helvetica, Arial, sans-serif;
 .describe-apps {
 	height: 22%;
 	padding-top: 0.4em;
-	background-color: white
+	background-color: white;
+	font-family: $default-fonts;
+	text-align: center;
+
+	p {
+		margin-top: 0.8em;
+		width: 85%;
+		display: inline-block
+	}
 }
 
 .button-apps {

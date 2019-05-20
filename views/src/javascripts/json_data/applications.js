@@ -3,7 +3,7 @@ const apps = {
 	"app": [
 		{
 			name: "User Stories",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			description: "User stories to simplify requirement descriptions.",
 			route: "user_stories",
 			color: "#FFEFDB"
 		},
